@@ -1,13 +1,19 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import './global.css'
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar } from 'react-native';
+import RootNavigator from '@/navigation/RootNavigator';
+import './global.css';
 
 const App = () => {
   return (
-    <View>
-      <Text>App</Text>
-    </View>
-  )
-}
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <StatusBar barStyle="light-content" backgroundColor="#151312" />
+        <RootNavigator />
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+};
 
-export default App
+export default App;

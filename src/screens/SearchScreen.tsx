@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ActivityIndicator, Alert, FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import { X } from 'lucide-react-native';
 
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
@@ -176,7 +177,7 @@ const SearchScreen = () => {
                       onPress={() => handleRemoveHistory(item.query)}
                       className="p-2"
                     >
-                      <Text className="text-light-300 text-lg">×</Text>
+                      <X size={20} color="#9CA4AB" />
                     </TouchableOpacity>
                   </TouchableOpacity>
                 ))}

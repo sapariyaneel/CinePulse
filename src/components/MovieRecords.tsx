@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { icons } from '@/constants/icons';
+import { Trophy, Zap } from 'lucide-react-native';
 
 interface MovieRecordsProps {
   longestMovie: {
@@ -39,7 +40,7 @@ const MovieRecords: React.FC<MovieRecordsProps> = ({ longestMovie, shortestMovie
           <View className="bg-dark-100 rounded-xl p-4 border border-light-300/20">
             <View className="flex-row items-center mb-2">
               <View className="w-8 h-8 rounded-full bg-accent/20 items-center justify-center mr-3">
-                <Text className="text-accent text-lg">🏆</Text>
+                <Trophy size={18} color="#AB8BFF" />
               </View>
               <Text className="text-light-300 text-xs uppercase tracking-wider">
                 Longest Movie
@@ -59,7 +60,7 @@ const MovieRecords: React.FC<MovieRecordsProps> = ({ longestMovie, shortestMovie
           <View className="bg-dark-100 rounded-xl p-4 border border-light-300/20">
             <View className="flex-row items-center mb-2">
               <View className="w-8 h-8 rounded-full bg-accent/20 items-center justify-center mr-3">
-                <Text className="text-accent text-lg">⚡</Text>
+                <Zap size={18} color="#AB8BFF" />
               </View>
               <Text className="text-light-300 text-xs uppercase tracking-wider">
                 Shortest Movie

@@ -1,5 +1,6 @@
 import { icons } from '@/constants/icons';
 import { images } from '@/constants/images';
+import { Check, Eye, EyeOff, X } from 'lucide-react-native';
 import { loginUser, setGuestMode, signupUser } from '@/services/authService';
 import { createUserProfile, isUsernameAvailable } from '@/services/userService';
 import { useNavigation } from '@react-navigation/native';
@@ -265,12 +266,12 @@ const AuthScreen = () => {
                         <ActivityIndicator size='small' color='#AB8BFF' />
                       ) : usernameAvailable === true ? (
                         <>
-                          <Text className='text-green-500 text-xs mr-1'>✓</Text>
+                          <Check size={12} color="#22c55e" style={{ marginRight: 4 }} />
                           <Text className='text-green-500 text-xs'>Username is available</Text>
                         </>
                       ) : usernameAvailable === false ? (
                         <>
-                          <Text className='text-red-500 text-xs mr-1'>✗</Text>
+                          <X size={12} color="#ef4444" style={{ marginRight: 4 }} />
                           <Text className='text-red-500 text-xs'>Username is already taken</Text>
                         </>
                       ) : null}
@@ -318,9 +319,7 @@ const AuthScreen = () => {
                     onPress={() => setShowPassword(!showPassword)}
                     className='absolute right-4 top-3.5'
                   >
-                    <Text className='text-light-300 text-base'>
-                      {showPassword ? '👁️' : '👁️‍🗨️'}
-                    </Text>
+                    {showPassword ? <Eye size={20} color="#9ca3af" /> : <EyeOff size={20} color="#9ca3af" />}
                   </TouchableOpacity>
                 </View>
               </View>
@@ -341,9 +340,7 @@ const AuthScreen = () => {
                       onPress={() => setShowConfirmPassword(!showConfirmPassword)}
                       className='absolute right-4 top-3.5'
                     >
-                      <Text className='text-light-300 text-base'>
-                        {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
-                      </Text>
+                      {showConfirmPassword ? <Eye size={20} color="#9ca3af" /> : <EyeOff size={20} color="#9ca3af" />}
                     </TouchableOpacity>
                   </View>
                   {confirmPassword.length > 0 && password !== confirmPassword && (
@@ -352,9 +349,12 @@ const AuthScreen = () => {
                     </Text>
                   )}
                   {confirmPassword.length > 0 && password === confirmPassword && (
-                    <Text className='text-green-500 text-xs mt-1 ml-1'>
-                      Passwords match ✓
-                    </Text>
+                    <View className='flex-row items-center mt-1 ml-1'>
+                      <Check size={12} color="#22c55e" style={{ marginRight: 4 }} />
+                      <Text className='text-green-500 text-xs'>
+                        Passwords match
+                      </Text>
+                    </View>
                   )}
                 </View>
               )}

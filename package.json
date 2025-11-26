@@ -21,6 +21,7 @@
     "react": "19.1.1",
     "react-native": "0.82.1",
     "react-native-appwrite": "^0.18.0",
+    "react-native-bootsplash": "^6.3.11",
     "react-native-dotenv": "^3.4.11",
     "react-native-gesture-handler": "^2.29.1",
     "react-native-reanimated": "^4.1.5",

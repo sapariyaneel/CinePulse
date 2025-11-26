@@ -1,5 +1,6 @@
 import { icons } from '@/constants/icons';
 import { images } from '@/constants/images';
+import { Clapperboard, Cloud, Heart, Lock, Users, Github } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { RootStackNavigationProp } from '@/navigation/types';
 import React from 'react';
@@ -92,7 +93,7 @@ const AboutScreen = () => {
           <View className='items-center mb-8'>
             <Image source={icons.logo} className='w-24 h-20 mb-4' resizeMode='contain' />
             <Text className='text-white text-4xl font-bold mb-2'>CinePulse</Text>
-            <Text className='text-accent text-base font-semibold mb-2'>Version 2.0.0</Text>
+            <Text className='text-accent text-base font-semibold mb-2'>Version 1.0.0</Text>
             <Text className='text-light-300 text-sm text-center px-8'>
               Your premium movie companion with watchlist categories, community reviews, and trending movies
             </Text>
@@ -147,7 +148,7 @@ const AboutScreen = () => {
               onPress={() => Linking.openURL('https://github.com/sapariyaneel/CinePulse')}
               className='bg-accent rounded-xl py-3.5 flex-row items-center justify-center'
             >
-              <Image source={icons.search} className='size-5 mr-2' tintColor='#151312' />
+              <Github size={20} color="#151312" style={{ marginRight: 8 }} />
               <Text className='text-secondary text-base font-semibold'>View on GitHub</Text>
             </TouchableOpacity>
           </View>
@@ -158,25 +159,37 @@ const AboutScreen = () => {
           <Text className='text-white text-2xl font-bold mb-4'>Privacy & Data</Text>
           <View className='bg-dark-200/80 rounded-2xl p-5 border border-dark-100'>
             <View className='mb-4'>
-              <Text className='text-white text-base font-semibold mb-2'>🔒 Secure Authentication</Text>
+              <View className='flex-row items-center mb-2'>
+                <Lock size={18} color="#fff" style={{ marginRight: 8 }} />
+                <Text className='text-white text-base font-semibold'>Secure Authentication</Text>
+              </View>
               <Text className='text-light-300 text-sm leading-6'>
                 Your account is secured with Supabase authentication. Your watchlist, reviews, and profile data are stored securely in the cloud and synced across devices.
               </Text>
             </View>
             <View className='mb-4'>
-              <Text className='text-white text-base font-semibold mb-2'>👥 Community Reviews</Text>
+              <View className='flex-row items-center mb-2'>
+                <Users size={18} color="#fff" style={{ marginRight: 8 }} />
+                <Text className='text-white text-base font-semibold'>Community Reviews</Text>
+              </View>
               <Text className='text-light-300 text-sm leading-6'>
                 Reviews you write are visible to all users, creating a vibrant community. Your watchlist and personal data remain private to your account.
               </Text>
             </View>
             <View className='mb-4'>
-              <Text className='text-white text-base font-semibold mb-2'>🎬 Movie Data</Text>
+              <View className='flex-row items-center mb-2'>
+                <Clapperboard size={18} color="#fff" style={{ marginRight: 8 }} />
+                <Text className='text-white text-base font-semibold'>Movie Data</Text>
+              </View>
               <Text className='text-light-300 text-sm leading-6'>
                 Movie information is fetched from The Movie Database (TMDB) API. Trending data is based on real user interactions within the app.
               </Text>
             </View>
             <View>
-              <Text className='text-white text-base font-semibold mb-2'>☁️ Cloud Sync</Text>
+              <View className='flex-row items-center mb-2'>
+                <Cloud size={18} color="#fff" style={{ marginRight: 8 }} />
+                <Text className='text-white text-base font-semibold'>Cloud Sync</Text>
+              </View>
               <Text className='text-light-300 text-sm leading-6'>
                 Your watchlist categories and reviews are synced to the cloud. Access your data from any device by logging in with your account.
               </Text>
@@ -206,7 +219,7 @@ const AboutScreen = () => {
         {/* Footer */}
         <View className='px-5 items-center'>
           <Text className='text-light-300 text-xs text-center'>
-            Made with ❤️ by Neel Sapariya
+            Made with <Heart size={12} color="#ef4444" fill="#ef4444" /> by Neel Sapariya
           </Text>
           <Text className='text-light-300 text-xs text-center mt-1'>
             © 2025 CinePulse. All rights reserved.

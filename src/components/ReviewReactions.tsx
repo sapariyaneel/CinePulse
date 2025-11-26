@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import { icons } from '@/constants/icons';
+import { Heart, ThumbsUp } from 'lucide-react-native';
 import { toggleReaction, getReviewWithReactions, type ReviewWithReactions } from '@/services/reviewReactionsService';
 import { supabase } from '@/services/supabase';
 
@@ -69,8 +70,12 @@ const ReviewReactions: React.FC<ReviewReactionsProps> = ({ reviewId, isOwnReview
             : 'bg-dark-100 border border-light-300/20'
         }`}
       >
-        <Text className="text-lg mr-1.5">
-          {reactions.userHasLiked ? '❤️' : '🤍'}
+        <Text className="mr-1.5">
+          {reactions.userHasLiked ? (
+            <Heart size={20} color="#ef4444" fill="#ef4444" />
+          ) : (
+            <Heart size={20} color="#9ca3af" />
+          )}
         </Text>
         <Text
           className={`text-xs font-semibold ${
@@ -91,7 +96,7 @@ const ReviewReactions: React.FC<ReviewReactionsProps> = ({ reviewId, isOwnReview
             : 'bg-dark-100 border border-light-300/20'
         }`}
       >
-        <Text className="text-lg mr-1.5">👍</Text>
+        <ThumbsUp size={20} color={reactions.userHasMarkedHelpful ? "#AB8BFF" : "#9ca3af"} style={{ marginRight: 6 }} />
         <Text
           className={`text-xs font-semibold ${
             reactions.userHasMarkedHelpful ? 'text-accent' : 'text-light-300'

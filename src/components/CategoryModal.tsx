@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
   Image,
 } from 'react-native';
+import { Check, X } from 'lucide-react-native';
 import { icons } from '@/constants/icons';
 import {
   getWatchlistCategories,
@@ -138,7 +139,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
                 onPress={onClose}
                 className="w-10 h-10 rounded-full bg-dark-100 items-center justify-center border border-light-300/20 ml-3"
               >
-                <Text className="text-white text-xl">×</Text>
+                <X size={24} color="#fff" />
               </TouchableOpacity>
             </View>
 
@@ -196,7 +197,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
                     {/* Checkmark */}
                     {isSelected && (
                       <View className="w-6 h-6 rounded-full bg-accent items-center justify-center">
-                        <Text className="text-secondary text-sm font-bold">✓</Text>
+                        <Check size={14} color="#151312" strokeWidth={3} />
                       </View>
                     )}
                   </TouchableOpacity>

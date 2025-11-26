@@ -302,11 +302,11 @@ Each user gets three default categories (Want to Watch, Watching, Completed) aut
 <table>
 <tr>
 <td width="33%">
-<img src="./ss/login.jpg" alt="Login Screen" />
+<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/f46f8866-5799-4120-95bc-e06413bfa615" />
 <p align="center"><strong>Login Screen</strong></p>
 </td>
 <td width="33%">
-<img src="./ss/signup.jpg" alt="Sign Up Screen" />
+<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/b4a3fc62-b0f5-4414-83a8-eeb15360e302" />
 <p align="center"><strong>Sign Up Screen</strong></p>
 </td>
 </tr>
@@ -317,15 +317,15 @@ Each user gets three default categories (Want to Watch, Watching, Completed) aut
 <table>
 <tr>
 <td width="33%">
-<img src="./ss/home.jpg" alt="Home Screen" />
+<img width="1080" height="2304" alt="image" src="https://github.com/user-attachments/assets/cac0fa5f-fd20-4661-ae4e-9a03a33c861a" />
 <p align="center"><strong>Home - Trending Movies</strong></p>
 </td>
 <td width="33%">
-<img src="./ss/search.jpg" alt="Search Screen" />
+<img width="1080" height="2300" alt="image" src="https://github.com/user-attachments/assets/9c55d77f-c50b-4005-85cf-9b4662ded2fb" />
 <p align="center"><strong>Search & Discovery</strong></p>
 </td>
 <td width="33%">
-<img src="./ss/details.jpg" alt="Movie Details" />
+<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/ad27c6b4-861d-4baa-a4e2-c00a55943ade" />
 <p align="center"><strong>Movie Details</strong></p>
 </td>
 </tr>
@@ -336,22 +336,16 @@ Each user gets three default categories (Want to Watch, Watching, Completed) aut
 <table>
 <tr>
 <td width="33%">
-<img src="./ss/saved.jpg" alt="Watchlist" />
+<img width="1080" height="2308" alt="image" src="https://github.com/user-attachments/assets/35426028-3059-4b34-9a56-b78b92fc3f84" />
 <p align="center"><strong>Categorized Watchlist</strong></p>
 </td>
 <td width="33%">
-<img src="./ss/profile-1.jpg" alt="Profile Overview" />
+<img width="1080" height="2312" alt="image" src="https://github.com/user-attachments/assets/b24d3376-9174-4350-a342-6a8fe6954998" />
 <p align="center"><strong>Profile Overview</strong></p>
 </td>
 <td width="33%">
-<img src="./ss/profile-2.jpg" alt="Statistics Dashboard" />
+<img width="1080" height="2312" alt="image" src="https://github.com/user-attachments/assets/32dc0490-de62-459f-bb03-040c4943aa93" />
 <p align="center"><strong>Statistics Dashboard</strong></p>
-</td>
-</tr>
-<tr>
-<td width="33%">
-<img src="./ss/profile-3.jpg" alt="Recommendations" />
-<p align="center"><strong>Personalized Recommendations</strong></p>
 </td>
 </tr>
 </table>
@@ -390,10 +384,10 @@ Specializing in React Native, TypeScript, and modern backend solutions.
 </p>
 
 <p>
-  <a href="https://github.com/Neel-SoftwarePRYM">
+  <a href="https://github.com/sapariyaneel">
     <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
-  <a href="mailto:your.email@example.com">
+  <a href="mailto:workwithneel@outlook.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
   </a>
 </p>

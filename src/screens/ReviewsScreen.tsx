@@ -16,7 +16,10 @@ const ReviewsScreen = () => {
   const loadReviews = async () => {
     try {
       setLoading(true);
+      console.log('Loading user reviews...');
       const userReviews = await getUserReviews();
+      console.log('Reviews loaded:', userReviews.length);
+      console.log('Reviews with posters:', userReviews.filter(r => r.moviePoster).length);
       setReviews(userReviews);
     } catch (error) {
       console.error('Error loading reviews:', error);
@@ -71,9 +74,11 @@ const ReviewsScreen = () => {
         >
           {item.moviePoster ? (
             <Image 
+              key={`poster-${item.movieId}-${item.moviePoster}`}
               source={{uri: `https://image.tmdb.org/t/p/w200${item.moviePoster}`}} 
               className='w-full h-full' 
               resizeMode="cover"
+              onError={(error) => console.log('Image load error for movie', item.movieId, ':', error.nativeEvent.error)}
             />
           ) : (
             <View className='w-full h-full items-center justify-center'>
@@ -192,6 +197,7 @@ const ReviewsScreen = () => {
             data={reviews}
             renderItem={renderReviewItem}
             keyExtractor={(item) => item.id}
+            extraData={reviews}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 100 }}
           />

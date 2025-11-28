@@ -99,15 +99,26 @@ export const getUserReviews = async (): Promise<MovieReview[]> => {
       data.map(async (review) => {
         let posterPath = '';
         try {
-          const response = await fetch(
-            `https://api.themoviedb.org/3/movie/${review.movie_id}?api_key=${MOVIE_API_KEY}`
-          );
+          const url = `https://api.themoviedb.org/3/movie/${review.movie_id}`;
+          console.log('Fetching poster for movie:', review.movie_id);
+
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${MOVIE_API_KEY}`,
+            },
+          });
+
           if (response.ok) {
             const movie = await response.json();
             posterPath = movie.poster_path || '';
+            console.log('Poster path fetched:', posterPath);
+          } else {
+            console.error('Failed to fetch movie data:', response.status, response.statusText);
           }
         } catch (error) {
-          // Silently fail, poster will be empty
+          console.error('Error fetching poster for movie', review.movie_id, ':', error);
         }
 
         return {

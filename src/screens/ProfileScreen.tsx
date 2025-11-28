@@ -9,7 +9,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import type { RootStackNavigationProp } from '@/navigation/types';
 import React, { useCallback, useState } from 'react'
-import { ActivityIndicator, Alert, Image, Linking, Modal, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Alert, Image, Linking, Modal, ScrollView, Text, TextInput, TouchableOpacity, View, useWindowDimensions } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import RatingStatsCard from '@/components/RatingStatsCard'
 import RatingDistributionChart from '@/components/RatingDistributionChart'
@@ -21,27 +21,29 @@ import WatchlistBreakdown from '@/components/WatchlistBreakdown'
 import MovieRecords from '@/components/MovieRecords'
 
 const ProfileOption = ({ icon, title, subtitle, onPress }: { icon: any, title: string, subtitle?: string, onPress?: () => void }) => (
-  <TouchableOpacity onPress={onPress} className='flex-row items-center py-4 border-b border-dark-100'>
-    <View className='w-12 h-12 rounded-full bg-dark-100 items-center justify-center mr-4'>
-      <Image source={icon} className='size-5' tintColor='#A8B5DB' />
+  <TouchableOpacity onPress={onPress} className='flex-row items-center py-3 sm:py-4 md:py-5 border-b border-dark-100'>
+    <View className='w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-dark-100 items-center justify-center mr-3 sm:mr-4 md:mr-5'>
+      <Image source={icon} className='w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6' tintColor='#A8B5DB' />
     </View>
     <View className='flex-1'>
-      <Text className='text-white text-base font-semibold'>{title}</Text>
-      {subtitle && <Text className='text-light-300 text-sm mt-1'>{subtitle}</Text>}
+      <Text className='text-white text-sm sm:text-base md:text-lg font-semibold'>{title}</Text>
+      {subtitle && <Text className='text-light-300 text-xs sm:text-sm md:text-base mt-0.5 sm:mt-1'>{subtitle}</Text>}
     </View>
-    <Image source={icons.arrow} className='size-4 rotate-180' tintColor='#A8B5DB' />
+    <Image source={icons.arrow} className='w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 rotate-180' tintColor='#A8B5DB' />
   </TouchableOpacity>
 )
 
 const StatCard = ({ value, label }: { value: string, label: string }) => (
-  <View className='flex-1 items-center py-4'>
-    <Text className='text-white text-2xl font-bold'>{value}</Text>
-    <Text className='text-light-300 text-sm mt-1'>{label}</Text>
+  <View className='flex-1 items-center py-3 sm:py-4 md:py-5'>
+    <Text className='text-white text-xl sm:text-2xl md:text-3xl font-bold'>{value}</Text>
+    <Text className='text-light-300 text-xs sm:text-sm md:text-base mt-0.5 sm:mt-1'>{label}</Text>
   </View>
 )
 
 const ProfileScreen = () => {
   const navigation = useNavigation<RootStackNavigationProp>()
+  const { width, height } = useWindowDimensions()
+  const isLandscape = width > height
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [showAvatarModal, setShowAvatarModal] = useState(false)
@@ -189,38 +191,38 @@ const ProfileScreen = () => {
       <ScrollView 
         className='flex-1'
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 100 }}
+        contentContainerStyle={{ paddingBottom: isLandscape ? 80 : 100 }}
       >
         {/* Header */}
-        <View className='px-5 pt-5 pb-8'>
-          <Text className='text-white text-3xl font-bold'>Profile</Text>
+        <View className='px-4 sm:px-5 md:px-6 lg:px-8 pt-4 sm:pt-5 md:pt-6 pb-6 sm:pb-8 md:pb-10'>
+          <Text className='text-white text-2xl sm:text-3xl md:text-4xl font-bold'>Profile</Text>
         </View>
 
         {/* Profile Card */}
-        <View className='mx-5 bg-dark-200/80 rounded-2xl p-6 mb-6 border border-dark-100'>
-          <View className='items-center mb-6'>
+        <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 bg-dark-200/80 rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 md:mb-8 border border-dark-100'>
+          <View className='items-center mb-4 sm:mb-6 md:mb-8'>
             {/* Avatar */}
             <TouchableOpacity 
               onPress={() => setShowAvatarModal(true)}
-              className='relative mb-4'
+              className='relative mb-3 sm:mb-4 md:mb-5'
             >
               <Image 
                 source={selectedAvatar.image} 
-                className='w-24 h-24 rounded-full border-2 border-accent'
+                className='w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full border-2 border-accent'
               />
-              <View className='absolute bottom-0 right-0 w-8 h-8 rounded-full bg-accent items-center justify-center border-2 border-primary'>
-                <Image source={icons.person} className='size-4' tintColor='#030014' />
+              <View className='absolute bottom-0 right-0 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-accent items-center justify-center border-2 border-primary'>
+                <Image source={icons.person} className='w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5' tintColor='#030014' />
               </View>
             </TouchableOpacity>
             
             {/* User Info */}
-            <Text className='text-white text-2xl font-bold'>{user?.name}</Text>
-            <Text className='text-accent text-sm mt-1'>@{user?.username}</Text>
-            <Text className='text-light-300 text-xs mt-1'>{user?.email}</Text>
+            <Text className='text-white text-xl sm:text-2xl md:text-3xl font-bold'>{user?.name}</Text>
+            <Text className='text-accent text-xs sm:text-sm md:text-base mt-0.5 sm:mt-1'>@{user?.username}</Text>
+            <Text className='text-light-300 text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1'>{user?.email}</Text>
           </View>
 
           {/* Stats */}
-          <View className='flex-row border-t border-dark-100 pt-4'>
+          <View className='flex-row border-t border-dark-100 pt-3 sm:pt-4 md:pt-5'>
             <StatCard value={user?.savedMovies.length.toString() || '0'} label='Saved' />
             <View className='w-px bg-dark-100' />
             <StatCard value={user?.reviewCount.toString() || '0'} label='Reviews' />
@@ -230,11 +232,11 @@ const ProfileScreen = () => {
         {/* Movie Statistics Dashboard */}
         {movieStats && (
           <>
-            <View className='mx-5 mb-4'>
-              <Text className='text-white text-2xl font-bold mb-4'>Statistics Dashboard</Text>
+            <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 mb-3 sm:mb-4 md:mb-5'>
+              <Text className='text-white text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 md:mb-5'>Statistics Dashboard</Text>
             </View>
 
-            <View className='mx-5 mb-6'>
+            <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 mb-4 sm:mb-6 md:mb-8'>
               <MovieStatsOverview
                 totalMoviesWatched={movieStats.totalMoviesWatched}
                 totalMoviesInWatchlist={movieStats.totalMoviesInWatchlist}
@@ -246,19 +248,19 @@ const ProfileScreen = () => {
             </View>
 
             {movieStats.favoriteGenres && movieStats.favoriteGenres.length > 0 && (
-              <View className='mx-5 mb-6'>
+              <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 mb-4 sm:mb-6 md:mb-8'>
                 <GenreBreakdown genres={movieStats.favoriteGenres} />
               </View>
             )}
 
             {movieStats.watchlistByCategory && movieStats.watchlistByCategory.length > 0 && (
-              <View className='mx-5 mb-6'>
+              <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 mb-4 sm:mb-6 md:mb-8'>
                 <WatchlistBreakdown categories={movieStats.watchlistByCategory} />
               </View>
             )}
 
             {(movieStats.longestMovie || movieStats.shortestMovie) && (
-              <View className='mx-5 mb-6'>
+              <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 mb-4 sm:mb-6 md:mb-8'>
                 <MovieRecords
                   longestMovie={movieStats.longestMovie}
                   shortestMovie={movieStats.shortestMovie}
@@ -270,7 +272,7 @@ const ProfileScreen = () => {
 
         {/* Genre Preferences Section */}
         {genrePreferences && genrePreferences.length > 0 && (
-          <View className='mx-5 mb-6'>
+          <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 mb-4 sm:mb-6 md:mb-8'>
             <GenrePreferences preferences={genrePreferences} />
           </View>
         )}
@@ -278,11 +280,11 @@ const ProfileScreen = () => {
         {/* Rating Statistics Section */}
         {ratingStats && ratingStats.totalReviews > 0 && (
           <>
-            <View className='mx-5 mb-4'>
-              <Text className='text-white text-2xl font-bold mb-4'>Your Rating Analytics</Text>
+            <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 mb-3 sm:mb-4 md:mb-5'>
+              <Text className='text-white text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 md:mb-5'>Your Rating Analytics</Text>
             </View>
 
-            <View className='mx-5 mb-6'>
+            <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 mb-4 sm:mb-6 md:mb-8'>
               <RatingStatsCard
                 totalReviews={ratingStats.totalReviews}
                 averageRating={ratingStats.averageRating}
@@ -291,19 +293,19 @@ const ProfileScreen = () => {
               />
             </View>
 
-            <View className='mx-5 mb-6'>
+            <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 mb-4 sm:mb-6 md:mb-8'>
               <RatingDistributionChart distribution={ratingStats.ratingDistribution} />
             </View>
 
-            <View className='mx-5 mb-6'>
+            <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 mb-4 sm:mb-6 md:mb-8'>
               <RecentRatings ratings={ratingStats.recentRatings} />
             </View>
           </>
         )}
 
         {/* Settings Section */}
-        <View className='mx-5 bg-dark-200/80 rounded-2xl p-6 mb-6 border border-dark-100'>
-          <Text className='text-white text-lg font-bold mb-4'>Account Settings</Text>
+        <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 bg-dark-200/80 rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 md:mb-8 border border-dark-100'>
+          <Text className='text-white text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4 md:mb-5'>Account Settings</Text>
           
           <ProfileOption 
             icon={icons.person}
@@ -328,8 +330,8 @@ const ProfileScreen = () => {
         </View>
 
         {/* Support Section */}
-        <View className='mx-5 bg-dark-200/80 rounded-2xl p-6 mb-6 border border-dark-100'>
-          <Text className='text-white text-lg font-bold mb-4'>Support</Text>
+        <View className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 bg-dark-200/80 rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 md:mb-8 border border-dark-100'>
+          <Text className='text-white text-base sm:text-lg md:text-xl font-bold mb-3 sm:mb-4 md:mb-5'>Support</Text>
           
           <ProfileOption 
             icon={icons.search}
@@ -368,9 +370,9 @@ const ProfileScreen = () => {
               ]
             )
           }}
-          className='mx-5 bg-dark-100 rounded-xl py-4 items-center mb-6 border border-light-300/20'
+          className='mx-4 sm:mx-5 md:mx-6 lg:mx-8 bg-dark-100 rounded-lg sm:rounded-xl md:rounded-2xl py-3 sm:py-4 md:py-5 items-center mb-4 sm:mb-6 md:mb-8 border border-light-300/20'
         >
-          <Text className='text-light-200 text-base font-semibold'>Sign Out</Text>
+          <Text className='text-light-200 text-sm sm:text-base md:text-lg font-semibold'>Sign Out</Text>
         </TouchableOpacity>
       </ScrollView>
 
@@ -388,11 +390,11 @@ const ProfileScreen = () => {
         >
           <TouchableOpacity 
             activeOpacity={1}
-            className='bg-dark-200 rounded-2xl p-6 mx-5 w-80 border border-dark-100'
+            className='bg-dark-200 rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 mx-4 sm:mx-5 md:mx-6 max-w-md w-full border border-dark-100'
           >
-            <Text className='text-white text-xl font-bold mb-6 text-center'>Choose Avatar</Text>
+            <Text className='text-white text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 md:mb-8 text-center'>Choose Avatar</Text>
             
-            <View className='flex-row justify-center gap-6 mb-6'>
+            <View className='flex-row justify-center gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-6 md:mb-8'>
               {avatars.map((avatar) => (
                 <TouchableOpacity
                   key={avatar.id}
@@ -403,22 +405,22 @@ const ProfileScreen = () => {
                 >
                   <Image 
                     source={avatar.image} 
-                    className={`w-20 h-20 rounded-full ${
+                    className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full ${
                       selectedAvatar.id === avatar.id 
                         ? 'border-4 border-accent' 
                         : 'border-2 border-light-300/20'
                     }`}
                   />
-                  <Text className='text-light-300 text-xs mt-2'>{avatar.name}</Text>
+                  <Text className='text-light-300 text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2'>{ avatar.name}</Text>
                 </TouchableOpacity>
               ))}
             </View>
 
             <TouchableOpacity 
               onPress={() => setShowAvatarModal(false)}
-              className='bg-accent rounded-xl py-3 items-center'
+              className='bg-accent rounded-lg sm:rounded-xl md:rounded-2xl py-2.5 sm:py-3 md:py-4 items-center'
             >
-              <Text className='text-secondary text-base font-semibold'>Done</Text>
+              <Text className='text-secondary text-sm sm:text-base md:text-lg font-semibold'>Done</Text>
             </TouchableOpacity>
           </TouchableOpacity>
         </TouchableOpacity>
@@ -432,27 +434,27 @@ const ProfileScreen = () => {
         onRequestClose={() => setShowEditModal(false)}
       >
         <View className='flex-1 bg-black/80 justify-end'>
-          <View className='bg-dark-200 rounded-t-3xl p-6 border-t border-dark-100'>
-            <View className='flex-row justify-between items-center mb-6'>
-              <Text className='text-white text-xl font-bold'>Edit Profile</Text>
+          <View className='bg-dark-200 rounded-t-2xl sm:rounded-t-3xl p-4 sm:p-6 md:p-8 border-t border-dark-100'>
+            <View className='flex-row justify-between items-center mb-4 sm:mb-6 md:mb-8'>
+              <Text className='text-white text-lg sm:text-xl md:text-2xl font-bold'>Edit Profile</Text>
               <TouchableOpacity onPress={() => setShowEditModal(false)}>
-                <Text className='text-light-300 text-base'>Cancel</Text>
+                <Text className='text-light-300 text-sm sm:text-base md:text-lg'>Cancel</Text>
               </TouchableOpacity>
             </View>
 
-            <View className='mb-4'>
-              <Text className='text-light-300 text-sm mb-2'>Name</Text>
+            <View className='mb-3 sm:mb-4 md:mb-5'>
+              <Text className='text-light-300 text-xs sm:text-sm md:text-base mb-1.5 sm:mb-2'>Name</Text>
               <TextInput
                 value={editName}
                 onChangeText={setEditName}
                 placeholder='Enter your name'
                 placeholderTextColor='#9CA4AB'
-                className='bg-dark-100 text-white px-4 py-3 rounded-xl border border-light-300/20'
+                className='bg-dark-100 text-white text-sm sm:text-base md:text-lg px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl md:rounded-2xl border border-light-300/20'
               />
             </View>
 
-            <View className='mb-4'>
-              <Text className='text-light-300 text-sm mb-2'>Username</Text>
+            <View className='mb-3 sm:mb-4 md:mb-5'>
+              <Text className='text-light-300 text-xs sm:text-sm md:text-base mb-1.5 sm:mb-2'>Username</Text>
               <TextInput
                 value={editUsername}
                 onChangeText={(text) => {
@@ -463,19 +465,19 @@ const ProfileScreen = () => {
                 placeholder='Enter username'
                 placeholderTextColor='#9CA4AB'
                 autoCapitalize='none'
-                className='bg-dark-100 text-white px-4 py-3 rounded-xl border border-light-300/20'
+                className='bg-dark-100 text-white text-sm sm:text-base md:text-lg px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl md:rounded-2xl border border-light-300/20'
               />
               {usernameError ? (
-                <Text className='text-red-500 text-xs mt-1'>{usernameError}</Text>
+                <Text className='text-red-500 text-[10px] sm:text-xs md:text-sm mt-1'>{usernameError}</Text>
               ) : (
-                <Text className='text-light-300 text-xs mt-1'>
+                <Text className='text-light-300 text-[10px] sm:text-xs md:text-sm mt-1'>
                   Only letters, numbers, dots and underscores allowed
                 </Text>
               )}
             </View>
 
-            <View className='mb-6'>
-              <Text className='text-light-300 text-sm mb-2'>Email</Text>
+            <View className='mb-4 sm:mb-6 md:mb-8'>
+              <Text className='text-light-300 text-xs sm:text-sm md:text-base mb-1.5 sm:mb-2'>Email</Text>
               <TextInput
                 value={editEmail}
                 onChangeText={setEditEmail}
@@ -483,21 +485,21 @@ const ProfileScreen = () => {
                 placeholderTextColor='#9CA4AB'
                 keyboardType='email-address'
                 autoCapitalize='none'
-                className='bg-dark-100 text-white px-4 py-3 rounded-xl border border-light-300/20'
+                className='bg-dark-100 text-white text-sm sm:text-base md:text-lg px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5 rounded-lg sm:rounded-xl md:rounded-2xl border border-light-300/20'
               />
             </View>
 
             <TouchableOpacity
               onPress={handleSaveProfile}
               disabled={saving || !!usernameError}
-              className={`rounded-xl py-4 items-center ${
+              className={`rounded-lg sm:rounded-xl md:rounded-2xl py-3 sm:py-4 md:py-5 items-center ${
                 saving || usernameError ? 'bg-dark-100' : 'bg-accent'
               }`}
             >
               {saving ? (
                 <ActivityIndicator color='#fff' />
               ) : (
-                <Text className='text-secondary text-base font-semibold'>Save Changes</Text>
+                <Text className='text-secondary text-sm sm:text-base md:text-lg font-semibold'>Save Changes</Text>
               )}
             </TouchableOpacity>
           </View>

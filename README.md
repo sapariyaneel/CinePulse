@@ -5,7 +5,7 @@
 ### Your Premium Movie Companion
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.0-blueviolet?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.0.1-blueviolet?style=for-the-badge" alt="Version">
   <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Native">
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
 
@@ -18,6 +18,8 @@
 
 <p align="center">
   <a href="#-download">📱 Download</a> •
+  <a href="#-fully-responsive-design">📱 Responsive</a> •
+  <a href="#-whats-new-in-v101">🎉 What's New</a> •
   <a href="#-features">🌟 Features</a> •
   <a href="#-quick-start">🚀 Quick Start</a> •
   <a href="#-tech-stack">🛠️ Tech Stack</a> •
@@ -33,7 +35,7 @@
 ### Get CinePulse on Android
 
 <p>
-  <a href="https://github.com/Neel-SoftwarePRYM/React-native-movie-app/releases">
+  <a href="https://github.com/sapariyaneel/CinePulse/releases">
     <img src="https://img.shields.io/badge/Download_APK-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
   </a>
 </p>
@@ -44,11 +46,66 @@
 
 </div>
 
-## 🌟 Features
+## 📱 Fully Responsive Design
+
+<div align="center">
+
+**CinePulse adapts seamlessly to any screen size and orientation!**
 
 <table>
 <tr>
-<td width="50%">
+<td align="center" width="33%">
+📱<br><strong>Small Phones</strong><br>
+<sub>Optimized layouts for compact screens</sub>
+</td>
+<td align="center" width="33%">
+📲<br><strong>Medium Phones</strong><br>
+<sub>Balanced grids and spacing</sub>
+</td>
+<td align="center" width="33%">
+📟<br><strong>Tablets</strong><br>
+<sub>Multi-column layouts for larger displays</sub>
+</td>
+</tr>
+</table>
+
+</div>
+
+## What's New in v1.0.1
+
+<div align="center">
+
+
+</div>
+
+### ✨ Major Updates
+
+#### 🎨 **Fully Responsive UI**
+- ✅ All screens now adapt to different screen sizes (phones to tablets)
+- ✅ Seamless portrait and landscape orientation support
+- ✅ Optimized layouts using NativeWind v4 responsive utilities
+- ✅ Dynamic sizing for movie posters, cards, and UI elements
+
+#### 🐛 **Bug Fixes**
+- ✅ Fixed movie posters not visible on My Reviews page
+- ✅ Resolved movie title overlapping with backdrop on Movie Details screen
+- ✅ Improved search history display and management
+- ✅ Fixed layout inconsistencies across different screen sizes
+
+#### ⚡ **Performance Optimizations**
+- ✅ **ProGuard enabled** - Code minification for faster app performance
+- ✅ **Split APKs** - Architecture-specific builds reduce download size by up to 50%
+- ✅ **Faster startup** - Optimized bundle loading and initialization
+- ✅ **Better caching** - Improved image and data caching mechanisms
+
+#### 🛠️ **Technical Improvements**
+- ✅ Migrated all styling to NativeWind utilities
+- ✅ Fixed TypeScript errors and linting issues
+- ✅ Enhanced code quality and maintainability
+- ✅ Updated build configuration for better optimization
+
+
+## 🌟 Features
 
 ### 🏆 Premium Features
 
@@ -74,17 +131,15 @@
 - Similar movies based on viewing history
 - Fallback to popular movies for new users
 
-</td>
-<td width="50%">
-
 ### ✨ Core Features
 
-#### 📝 Rating Analytics
+#### 📝 Rating & Reviews
 - Comprehensive **rating analytics** dashboard
 - Visual **rating distribution** charts
 - Recent ratings timeline
 - Color-coded rating badges
 - Average rating calculations
+- Write and manage your reviews
 
 #### 👍 Review Reactions
 - **Like** (❤️) and **Helpful** (👍) reactions
@@ -92,6 +147,7 @@
 - Toggle reactions on/off
 - Guest-friendly viewing
 - Prevents self-reactions
+- Social engagement features
 
 #### 🔥 Trending & Discovery
 - Algorithm-based trending (top 9 movies)
@@ -99,12 +155,9 @@
 - Movie details with cast & crew
 - Guest mode for browsing
 - Pull-to-refresh everywhere
+- Latest releases section
 
-</td>
-</tr>
-</table>
-
-
+---
 ## 🛠️ Tech Stack
 
 <div align="center">
@@ -171,8 +224,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Neel-SoftwarePRYM/React-native-movie-app.git
-   cd React-native-movie-app
+   git clone https://github.com/sapariyaneel/CinePulse.git
+   cd CinePulse
    ```
 
 2. **Install dependencies**

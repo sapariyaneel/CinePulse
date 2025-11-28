@@ -349,59 +349,26 @@ Each user gets three default categories (Want to Watch, Watching, Completed) aut
 ## 📸 Screenshots
 
 <div align="center">
-
-### Authentication & Onboarding
-
-<table>
-<tr>
-<td width="33%">
-<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/f46f8866-5799-4120-95bc-e06413bfa615" />
-<p align="center"><strong>Login Screen</strong></p>
-</td>
-<td width="33%">
-<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/b4a3fc62-b0f5-4414-83a8-eeb15360e302" />
-<p align="center"><strong>Sign Up Screen</strong></p>
-</td>
-</tr>
-</table>
-
-### Main Features
-
-<table>
-<tr>
-<td width="33%">
-<img width="1080" height="2304" alt="image" src="https://github.com/user-attachments/assets/cac0fa5f-fd20-4661-ae4e-9a03a33c861a" />
-<p align="center"><strong>Home - Trending Movies</strong></p>
-</td>
-<td width="33%">
-<img width="1080" height="2300" alt="image" src="https://github.com/user-attachments/assets/9c55d77f-c50b-4005-85cf-9b4662ded2fb" />
-<p align="center"><strong>Search & Discovery</strong></p>
-</td>
-<td width="33%">
-<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/ad27c6b4-861d-4baa-a4e2-c00a55943ade" />
-<p align="center"><strong>Movie Details</strong></p>
-</td>
-</tr>
-</table>
-
-### User Profile & Watchlist
-
-<table>
-<tr>
-<td width="33%">
-<img width="1080" height="2308" alt="image" src="https://github.com/user-attachments/assets/35426028-3059-4b34-9a56-b78b92fc3f84" />
-<p align="center"><strong>Categorized Watchlist</strong></p>
-</td>
-<td width="33%">
-<img width="1080" height="2312" alt="image" src="https://github.com/user-attachments/assets/b24d3376-9174-4350-a342-6a8fe6954998" />
-<p align="center"><strong>Profile Overview</strong></p>
-</td>
-<td width="33%">
-<img width="1080" height="2312" alt="image" src="https://github.com/user-attachments/assets/32dc0490-de62-459f-bb03-040c4943aa93" />
-<p align="center"><strong>Statistics Dashboard</strong></p>
-</td>
-</tr>
-</table>
+<p>
+  <img width="300" height="800" alt="login" src="https://github.com/user-attachments/assets/35356066-75a2-46d2-8752-1bbc90fe400c" />
+  <img width="300" height="800" alt="register" src="https://github.com/user-attachments/assets/0a08fb6a-d433-4fb9-8988-079b02a9e54f" />
+</p>
+<p>
+  <img width="300" height="800" alt="home-screen" src="https://github.com/user-attachments/assets/aa2c7a33-af5a-41e9-9677-4fed46ecfb8f" />
+  <img width="300" height="800" alt="movie-details=screen" src="https://github.com/user-attachments/assets/195c779b-e052-4e29-b210-ed7ea9222f94" />
+</p>
+<p>
+  <img width="300" height="800" alt="search-screen" src="https://github.com/user-attachments/assets/0e679805-f1fe-41a0-9576-c275fc36bf07" />
+  <img width="300" height="800" alt="saved/watchlist" src="https://github.com/user-attachments/assets/27013df5-37f8-4a03-8e0e-bcb3036629f5" />
+</p>
+<p>
+  <img width="300" height="800" alt="profile-1" src="https://github.com/user-attachments/assets/7a9b4553-e72c-4a56-8627-d031d1ce499d" />
+  <img width="300" height="800" alt="profile-2" src="https://github.com/user-attachments/assets/1664a187-d9f3-407a-a3aa-0550a4ba7597" />
+</p>
+<p>
+  <img width="300" height="800" alt="profile-3" src="https://github.com/user-attachments/assets/96e99752-a61b-48a7-b357-f8d4d6a91b79" />
+  <img width="300" height="800" alt="profile-4" src="https://github.com/user-attachments/assets/2af4882c-03db-4753-8320-0fb3c415206d" />
+</p>
 
 </div>
 

@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import type { TabNavigationProp } from "@/navigation/types";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -9,6 +9,7 @@ import {
   ScrollView,
   Text,
   View,
+  useWindowDimensions,
 } from "react-native";
 
 import { fetchMovies } from "@/services/api";
@@ -27,9 +28,21 @@ import RecommendationCard from "@/components/RecommendationCard";
 
 const HomeScreen = () => {
   const navigation = useNavigation<TabNavigationProp>();
+  const { width, height } = useWindowDimensions();
   const [refreshing, setRefreshing] = useState(false);
   const [recommendations, setRecommendations] = useState<any[]>([]);
   const [loadingRecommendations, setLoadingRecommendations] = useState(false);
+
+  // Calculate number of columns based on screen width
+  const numColumns = useMemo(() => {
+    if (width < 360) return 2; // Small phones
+    if (width < 600) return 3; // Standard phones
+    if (width < 900) return 4; // Large phones/small tablets
+    return 5; // Tablets and larger
+  }, [width]);
+
+  // Check if landscape mode
+  const isLandscape = width > height;
 
   const {
     data: trendingMovies,
@@ -77,9 +90,9 @@ const HomeScreen = () => {
       />
 
       <ScrollView
-        className="flex-1 px-5"
+        className="flex-1 px-3 sm:px-4 md:px-6 lg:px-8"
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ minHeight: "100%", paddingBottom: 10 }}
+        contentContainerClassName="pb-4 sm:pb-6 md:pb-8"
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
@@ -89,18 +102,23 @@ const HomeScreen = () => {
           />
         }
       >
-        <Image source={icons.logo} className="w-12 h-10 mt-20 mb-5 mx-auto" />
+        <Image 
+          source={icons.logo} 
+          className="w-10 h-8 sm:w-12 sm:h-10 md:w-14 md:h-12 lg:w-16 lg:h-14 mt-12 sm:mt-16 md:mt-20 mb-4 sm:mb-5 md:mb-6 mx-auto" 
+        />
 
         {moviesLoading || trendingLoading ? (
           <ActivityIndicator
             size="large"
-            color="#0000ff"
-            className="mt-10 self-center"
+            color="#AB8BFF"
+            className="mt-8 sm:mt-10 md:mt-12 self-center"
           />
         ) : moviesError || trendingError ? (
-          <Text>Error: {moviesError?.message || trendingError?.message}</Text>
+          <Text className="text-light-200 text-sm sm:text-base md:text-lg text-center mt-8 px-4">
+            Error: {moviesError?.message || trendingError?.message}
+          </Text>
         ) : (
-          <View className="flex-1 mt-5">
+          <View className="flex-1 mt-3 sm:mt-4 md:mt-5">
             <SearchBar
               onPress={() => {
                 navigation.navigate("Search");
@@ -109,28 +127,25 @@ const HomeScreen = () => {
             />
 
             {trendingMovies && trendingMovies.length > 0 ? (
-              <View className="mt-10">
-                <Text className="text-lg text-white font-bold mb-3">
+              <View className="mt-6 sm:mt-8 md:mt-10">
+                <Text className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-bold mb-2 sm:mb-3 md:mb-4">
                   Trending Movies
                 </Text>
                 <FlatList
                   horizontal
                   showsHorizontalScrollIndicator={false}
-                  className="mb-4 mt-3"
+                  className="mt-2 sm:mt-3 md:mt-4"
                   data={trendingMovies}
-                  contentContainerStyle={{
-                    gap: 26,
-                  }}
+                  contentContainerClassName="gap-4 sm:gap-5 md:gap-6 lg:gap-8"
                   renderItem={({ item, index }) => (
                     <TrendingCard movie={item} index={index} />
                   )}
                   keyExtractor={(item, index) => `${item.movie_id}-${index}`}
-                  ItemSeparatorComponent={() => <View className="w-4" />}
                 />
               </View>
             ) : (
-              <View className="mt-10">
-                <Text className="text-light-300 text-sm text-center">
+              <View className="mt-6 sm:mt-8 md:mt-10 px-4">
+                <Text className="text-light-300 text-xs sm:text-sm md:text-base text-center">
                   No trending movies yet. Browse and view movies to see trending!
                 </Text>
               </View>
@@ -138,41 +153,39 @@ const HomeScreen = () => {
 
             {/* Personalized Recommendations */}
             {recommendations && recommendations.length > 0 && (
-              <View className="mt-10">
-                <Text className="text-lg text-white font-bold mb-3">
+              <View className="mt-6 sm:mt-8 md:mt-10">
+                <Text className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-bold mb-2 sm:mb-3 md:mb-4">
                   Recommended For You
                 </Text>
                 <FlatList
                   horizontal
                   showsHorizontalScrollIndicator={false}
-                  className="mb-4 mt-3"
+                  className="mt-2 sm:mt-3 md:mt-4"
                   data={recommendations}
+                  contentContainerClassName="gap-3 sm:gap-4 md:gap-5"
                   renderItem={({ item }) => <RecommendationCard movie={item} />}
                   keyExtractor={(item) => item.id.toString()}
                 />
               </View>
             )}
 
-            <>
-              <Text className="text-lg text-white font-bold mt-5 mb-3">
+            <View>
+              <Text className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-bold mt-4 sm:mt-5 md:mt-6 mb-2 sm:mb-3 md:mb-4">
                 Latest Movies
               </Text>
 
               <FlatList
                 data={movies}
-                renderItem={({ item }) => <MovieCard movie={item} />}
+                renderItem={({ item }) => <MovieCard movie={item} numColumns={numColumns} />}
                 keyExtractor={(item) => item.id.toString()}
-                numColumns={3}
-                columnWrapperStyle={{
-                  justifyContent: "flex-start",
-                  gap: 20,
-                  paddingRight: 5,
-                  marginBottom: 10,
-                }}
-                className="mt-2 pb-32"
+                key={numColumns}
+                numColumns={numColumns}
+                contentContainerClassName="gap-y-3 sm:gap-y-4 md:gap-y-5 pb-24 sm:pb-28 md:pb-32"
+                columnWrapperClassName="gap-x-2 sm:gap-x-3 md:gap-x-4 lg:gap-x-5"
+                className="mt-2"
                 scrollEnabled={false}
               />
-            </>
+            </View>
           </View>
         )}
       </ScrollView>

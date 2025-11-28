@@ -7,6 +7,7 @@ import {
   Image,
   RefreshControl,
   ScrollView,
+  StatusBar,
   Text,
   View,
   useWindowDimensions,
@@ -32,6 +33,7 @@ const HomeScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [recommendations, setRecommendations] = useState<any[]>([]);
   const [loadingRecommendations, setLoadingRecommendations] = useState(false);
+  const [showStatusBar, setShowStatusBar] = useState(false);
 
   // Calculate number of columns based on screen width
   const numColumns = useMemo(() => {
@@ -81,8 +83,14 @@ const HomeScreen = () => {
     setRefreshing(false);
   };
 
+  const handleScroll = (event: any) => {
+    const offsetY = event.nativeEvent.contentOffset.y;
+    setShowStatusBar(offsetY > 50);
+  };
+
   return (
     <View className="flex-1 bg-primary">
+      <StatusBar translucent backgroundColor="transparent" hidden={!showStatusBar} barStyle="light-content" />
       <Image
         source={images.bg}
         className="absolute w-full h-full z-0"
@@ -93,6 +101,8 @@ const HomeScreen = () => {
         className="flex-1 px-3 sm:px-4 md:px-6 lg:px-8"
         showsVerticalScrollIndicator={false}
         contentContainerClassName="pb-4 sm:pb-6 md:pb-8"
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
@@ -169,22 +179,24 @@ const HomeScreen = () => {
               </View>
             )}
 
-            <View>
-              <Text className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-bold mt-4 sm:mt-5 md:mt-6 mb-2 sm:mb-3 md:mb-4">
+            <View className="items-center">
+              <Text className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-bold mt-4 sm:mt-5 md:mt-6 mb-2 sm:mb-3 md:mb-4 self-start">
                 Latest Movies
               </Text>
 
-              <FlatList
-                data={movies}
-                renderItem={({ item }) => <MovieCard movie={item} numColumns={numColumns} />}
-                keyExtractor={(item) => item.id.toString()}
-                key={numColumns}
-                numColumns={numColumns}
-                contentContainerClassName="gap-y-3 sm:gap-y-4 md:gap-y-5 pb-24 sm:pb-28 md:pb-32"
-                columnWrapperClassName="gap-x-2 sm:gap-x-3 md:gap-x-4 lg:gap-x-5"
-                className="mt-2"
-                scrollEnabled={false}
-              />
+              <View className="w-full items-center">
+                <FlatList
+                  data={movies}
+                  renderItem={({ item }) => <MovieCard movie={item} numColumns={numColumns} />}
+                  keyExtractor={(item) => item.id.toString()}
+                  key={numColumns}
+                  numColumns={numColumns}
+                  contentContainerClassName="gap-y-3 sm:gap-y-4 md:gap-y-5 pb-24 sm:pb-28 md:pb-32"
+                  columnWrapperClassName="gap-x-2 sm:gap-x-3 md:gap-x-4 lg:gap-x-5 justify-center"
+                  className="mt-2"
+                  scrollEnabled={false}
+                />
+              </View>
             </View>
           </View>
         )}

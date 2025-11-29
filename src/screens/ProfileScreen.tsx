@@ -19,6 +19,7 @@ import MovieStatsOverview from '@/components/MovieStatsOverview'
 import GenreBreakdown from '@/components/GenreBreakdown'
 import WatchlistBreakdown from '@/components/WatchlistBreakdown'
 import MovieRecords from '@/components/MovieRecords'
+import ProfileSkeleton from '@/components/ProfileSkeleton'
 
 const ProfileOption = ({ icon, title, subtitle, onPress }: { icon: any, title: string, subtitle?: string, onPress?: () => void }) => (
   <TouchableOpacity onPress={onPress} className='flex-row items-center py-3 sm:py-4 md:py-5 border-b border-dark-100'>
@@ -173,11 +174,7 @@ const ProfileScreen = () => {
   const selectedAvatar = avatars.find(a => a.id === user?.avatarId) || avatars[0]
 
   if (loading) {
-    return (
-      <SafeAreaView className='bg-primary flex-1 justify-center items-center'>
-        <ActivityIndicator size="large" color="#AB8BFF" />
-      </SafeAreaView>
-    )
+    return <ProfileSkeleton />
   }
 
   return (
@@ -318,7 +315,7 @@ const ProfileScreen = () => {
             icon={icons.save}
             title='Saved Movies'
             subtitle='View your saved collection'
-            onPress={() => navigation.navigate('Tabs')}
+            onPress={() => navigation.navigate('Tabs', { screen: 'Saved' } as any)}
           />
           
           <ProfileOption 
@@ -343,7 +340,7 @@ const ProfileScreen = () => {
           <ProfileOption 
             icon={icons.star}
             title='About'
-            subtitle='CinePulse v1.0.0 by Neel Sapariya'
+            subtitle='CinePulse v1.0.2 by Neel Sapariya'
             onPress={() => navigation.navigate('About')}
           />
         </View>

@@ -13,6 +13,7 @@ import { ActivityIndicator, Alert, FlatList, Image, Modal, ScrollView, Text, Tex
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CategoryModal from '@/components/CategoryModal'
 import ReviewReactions from '@/components/ReviewReactions';
+import MovieDetailsSkeleton from '@/components/MovieDetailsSkeleton';
 
 interface MovieInfoProps {
   label: string;
@@ -189,21 +190,7 @@ const MovieDetailsScreen = () => {
   };
 
   if (loading) {
-    return (
-      <SafeAreaView className='bg-primary flex-1'>
-        <Image
-          source={images.bg}
-          className='absolute w-full h-full'
-          resizeMode='cover'
-        />
-        <View className='flex-1 justify-center items-center px-4 sm:px-6 md:px-8'>
-          <View className='bg-dark-200/90 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 items-center border border-dark-100'>
-            <ActivityIndicator size='large' color='#AB8BFF' />
-            <Text className='text-white text-sm sm:text-base md:text-lg font-semibold mt-3 sm:mt-4'>Loading movie details...</Text>
-          </View>
-        </View>
-      </SafeAreaView>
-    );
+    return <MovieDetailsSkeleton />
   }
 
   if (!movie) {
@@ -224,7 +211,7 @@ const MovieDetailsScreen = () => {
           {/* Backdrop Image */}
           <View className='relative'>
             <Image 
-              source={{uri: `https://image.tmdb.org/t/p/original${movie?.backdrop_path || movie?.poster_path}`}} 
+              source={{uri: `https://image.tmdb.org/t/p/w780${movie?.backdrop_path || movie?.poster_path}`}} 
               className={`w-full ${isLandscape ? 'h-40 sm:h-48 md:h-56' : 'h-48 sm:h-56 md:h-64 lg:h-72'}`}
               resizeMode="cover" 
             />
@@ -237,7 +224,7 @@ const MovieDetailsScreen = () => {
               {/* Poster */}
               <View className={`${isLandscape ? 'w-28 h-40 sm:w-32 sm:h-44 md:w-36 md:h-48' : 'w-32 h-48 sm:w-36 sm:h-52 md:w-40 md:h-56 lg:w-44 lg:h-60'} rounded-lg sm:rounded-xl overflow-hidden border-2 border-dark-100 shadow-lg`}>
                 <Image 
-                  source={{uri: `https://image.tmdb.org/t/p/w500${movie?.poster_path}`}} 
+                  source={{uri: `https://image.tmdb.org/t/p/w342${movie?.poster_path}`}} 
                   className='w-full h-full' 
                   resizeMode="cover" 
                 />
@@ -326,7 +313,7 @@ const MovieDetailsScreen = () => {
                         <View className='w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-dark-100 border border-light-300/20 mb-1.5 sm:mb-2'>
                           {actor.profile_path ? (
                             <Image 
-                              source={{uri: `https://image.tmdb.org/t/p/w185${actor.profile_path}`}} 
+                              source={{uri: `https://image.tmdb.org/t/p/w92${actor.profile_path}`}} 
                               className='w-full h-full' 
                               resizeMode="cover"
                             />

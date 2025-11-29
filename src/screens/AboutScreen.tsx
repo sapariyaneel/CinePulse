@@ -93,7 +93,7 @@ const AboutScreen = () => {
           <View className='items-center mb-8'>
             <Image source={icons.logo} className='w-24 h-20 mb-4' resizeMode='contain' />
             <Text className='text-white text-4xl font-bold mb-2'>CinePulse</Text>
-            <Text className='text-accent text-base font-semibold mb-2'>Version 1.0.0</Text>
+            <Text className='text-accent text-base font-semibold mb-2'>Version 1.0.2</Text>
             <Text className='text-light-300 text-sm text-center px-8'>
               Your premium movie companion with watchlist categories, community reviews, and trending movies
             </Text>

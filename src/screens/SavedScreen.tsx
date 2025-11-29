@@ -6,9 +6,10 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import type { TabNavigationProp } from '@/navigation/types';
 import React, { useCallback, useState } from 'react'
-import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View, ScrollView, useWindowDimensions } from 'react-native'
+import { FlatList, Image, Text, TouchableOpacity, View, ScrollView, useWindowDimensions } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import WatchlistCard from '@/components/WatchlistCard'
+import WatchlistSkeleton from '@/components/WatchlistSkeleton'
 
 interface CategoryChipProps {
   category: WatchlistCategory;
@@ -73,6 +74,7 @@ const SavedScreen = () => {
   const [categories, setCategories] = useState<WatchlistCategory[]>([])
   const [watchlistItems, setWatchlistItems] = useState<WatchlistItem[]>([])
   const [loading, setLoading] = useState(true)
+  const [initialLoad, setInitialLoad] = useState(true)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   
@@ -106,6 +108,7 @@ const SavedScreen = () => {
       console.error('Error loading watchlist:', error)
     } finally {
       setLoading(false)
+      setInitialLoad(false)
     }
   }
 
@@ -187,10 +190,8 @@ const SavedScreen = () => {
         </View>
 
         {/* Watchlist Items Grid */}
-        {loading ? (
-          <View className='flex-1 items-center justify-center px-4 sm:px-6'>
-            <ActivityIndicator size='large' color='#AB8BFF' />
-          </View>
+        {loading && initialLoad ? (
+          <WatchlistSkeleton numColumns={numColumns} />
         ) : !isAuthenticated ? (
           <View className='flex-1 items-center justify-center px-6 sm:px-8 md:px-10'>
             <View className='w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-dark-100 items-center justify-center mb-4 sm:mb-5 md:mb-6 border border-light-300/20'>

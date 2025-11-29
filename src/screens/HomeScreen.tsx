@@ -2,7 +2,6 @@ import { useNavigation } from "@react-navigation/native";
 import type { TabNavigationProp } from "@/navigation/types";
 import React, { useState, useEffect, useMemo } from "react";
 import {
-  ActivityIndicator,
   FlatList,
   Image,
   RefreshControl,
@@ -26,6 +25,7 @@ import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
 import TrendingCard from "@/components/TrendingCard";
 import RecommendationCard from "@/components/RecommendationCard";
+import SkeletonLoader from "@/components/SkeletonLoader";
 
 const HomeScreen = () => {
   const navigation = useNavigation<TabNavigationProp>();
@@ -117,12 +117,8 @@ const HomeScreen = () => {
           className="w-10 h-8 sm:w-12 sm:h-10 md:w-14 md:h-12 lg:w-16 lg:h-14 mt-12 sm:mt-16 md:mt-20 mb-4 sm:mb-5 md:mb-6 mx-auto" 
         />
 
-        {moviesLoading || trendingLoading ? (
-          <ActivityIndicator
-            size="large"
-            color="#AB8BFF"
-            className="mt-8 sm:mt-10 md:mt-12 self-center"
-          />
+        {(moviesLoading || trendingLoading) && !movies && !trendingMovies ? (
+          <SkeletonLoader numColumns={numColumns} />
         ) : moviesError || trendingError ? (
           <Text className="text-light-200 text-sm sm:text-base md:text-lg text-center mt-8 px-4">
             Error: {moviesError?.message || trendingError?.message}

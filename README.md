@@ -5,7 +5,7 @@
 ### Your Premium Movie Companion
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.1-blueviolet?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/badge/version-1.0.2-blueviolet?style=for-the-badge" alt="Version">
   <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Native">
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
 

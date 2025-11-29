@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, useWindowDimensions } from 'react-
 import { useNavigation } from '@react-navigation/native';
 import type { RootStackNavigationProp } from '@/navigation/types';
 import { icons } from '@/constants/icons';
+import OptimizedImage from './OptimizedImage';
 
 interface WatchlistCardProps {
   item: WatchlistItem;
@@ -56,12 +57,10 @@ const WatchlistCard: React.FC<WatchlistCardProps> = ({ item, onLongPress, numCol
     >
       <View className="relative">
         {/* Movie Poster */}
-        <Image
-          source={{ 
-            uri: item.posterPath 
-              ? `https://image.tmdb.org/t/p/w500${item.posterPath}` 
-              : 'https://via.placeholder.com/500x750?text=No+Image' 
-          }}
+        <OptimizedImage
+          uri={item.posterPath 
+            ? `https://image.tmdb.org/t/p/w500${item.posterPath}` 
+            : 'https://via.placeholder.com/500x750?text=No+Image'}
           className="w-full rounded-lg sm:rounded-xl border border-light-300/20"
           style={{ height: cardWidth * 1.5 }}
           resizeMode="cover"

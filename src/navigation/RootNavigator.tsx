@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { hasCompletedOnboarding } from '@/services/authService';
+import { hasCompletedOnboarding, restoreSession } from '@/services/authService';
 import type { RootStackParamList } from './types';
 
 // Import navigators and screens
@@ -22,6 +22,9 @@ const RootNavigator = () => {
 
   const checkOnboarding = async () => {
     try {
+      // Try to restore session first
+      await restoreSession();
+      
       const completed = await hasCompletedOnboarding();
       setInitialRoute(completed ? 'Tabs' : 'Auth');
     } catch (error) {

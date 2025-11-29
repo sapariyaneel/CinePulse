@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import type { RootStackNavigationProp } from '@/navigation/types';
 import React, { useMemo } from 'react';
 import { Image, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
+import OptimizedImage from './OptimizedImage';
 
 interface MovieCardProps {
   movie: Movie;
@@ -39,12 +40,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, numColumns = 3 }) => {
       style={{ width: cardWidth }}
       className="mb-2 sm:mb-3 md:mb-4"
     >
-      <Image 
-        source={{
-          uri: movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-            : 'https://placehold.co/600x400/1a1a1a/ffffff.png'
-        }}
+      <OptimizedImage 
+        uri={movie.poster_path
+          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+          : 'https://placehold.co/600x400/1a1a1a/ffffff.png'}
         style={{ width: cardWidth, height: cardHeight }}
         className="rounded-lg sm:rounded-xl"
         resizeMode="cover"

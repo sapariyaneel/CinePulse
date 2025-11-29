@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, useWindowDimensions } from 'react-
 import { useNavigation } from '@react-navigation/native';
 import type { RootStackNavigationProp } from '@/navigation/types';
 import { icons } from '@/constants/icons';
+import OptimizedImage from './OptimizedImage';
 
 interface RecommendationCardProps {
   movie: {
@@ -39,12 +40,10 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ movie }) => {
     >
       {/* Movie Poster */}
       <View className="relative">
-        <Image
-          source={{
-            uri: movie.poster_path
-              ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
-              : 'https://via.placeholder.com/342x513?text=No+Image',
-          }}
+        <OptimizedImage
+          uri={movie.poster_path
+            ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+            : 'https://via.placeholder.com/342x513?text=No+Image'}
           style={{ width: cardDimensions.width, height: cardDimensions.height }}
           className="rounded-xl sm:rounded-2xl md:rounded-3xl"
           resizeMode="cover"

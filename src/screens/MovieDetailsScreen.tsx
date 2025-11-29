@@ -14,6 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import CategoryModal from '@/components/CategoryModal'
 import ReviewReactions from '@/components/ReviewReactions';
 import MovieDetailsSkeleton from '@/components/MovieDetailsSkeleton';
+import OptimizedImage from '@/components/OptimizedImage';
 
 interface MovieInfoProps {
   label: string;
@@ -210,8 +211,8 @@ const MovieDetailsScreen = () => {
         }}>
           {/* Backdrop Image */}
           <View className='relative'>
-            <Image 
-              source={{uri: `https://image.tmdb.org/t/p/w780${movie?.backdrop_path || movie?.poster_path}`}} 
+            <OptimizedImage 
+              uri={`https://image.tmdb.org/t/p/w780${movie?.backdrop_path || movie?.poster_path}`}
               className={`w-full ${isLandscape ? 'h-40 sm:h-48 md:h-56' : 'h-48 sm:h-56 md:h-64 lg:h-72'}`}
               resizeMode="cover" 
             />
@@ -223,8 +224,8 @@ const MovieDetailsScreen = () => {
             <View className='flex-row gap-3 sm:gap-4 md:gap-5 mb-4 sm:mb-5 md:mb-6'>
               {/* Poster */}
               <View className={`${isLandscape ? 'w-28 h-40 sm:w-32 sm:h-44 md:w-36 md:h-48' : 'w-32 h-48 sm:w-36 sm:h-52 md:w-40 md:h-56 lg:w-44 lg:h-60'} rounded-lg sm:rounded-xl overflow-hidden border-2 border-dark-100 shadow-lg`}>
-                <Image 
-                  source={{uri: `https://image.tmdb.org/t/p/w342${movie?.poster_path}`}} 
+                <OptimizedImage 
+                  uri={`https://image.tmdb.org/t/p/w342${movie?.poster_path}`}
                   className='w-full h-full' 
                   resizeMode="cover" 
                 />
@@ -312,8 +313,8 @@ const MovieDetailsScreen = () => {
                       <View key={actor.id} className='items-center w-20 sm:w-24 md:w-28'>
                         <View className='w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-dark-100 border border-light-300/20 mb-1.5 sm:mb-2'>
                           {actor.profile_path ? (
-                            <Image 
-                              source={{uri: `https://image.tmdb.org/t/p/w92${actor.profile_path}`}} 
+                            <OptimizedImage 
+                              uri={`https://image.tmdb.org/t/p/w92${actor.profile_path}`}
                               className='w-full h-full' 
                               resizeMode="cover"
                             />

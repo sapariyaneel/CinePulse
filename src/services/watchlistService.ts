@@ -10,7 +10,7 @@ import { supabase } from './supabase';
 export const getWatchlistCategories = async (): Promise<WatchlistCategory[]> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       return [];
     }
@@ -68,7 +68,7 @@ export const createWatchlistCategory = async (
 ): Promise<WatchlistCategory | null> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       throw new Error('User not authenticated');
     }
@@ -118,7 +118,7 @@ export const updateWatchlistCategory = async (
 ): Promise<WatchlistCategory | null> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       throw new Error('User not authenticated');
     }
@@ -165,7 +165,7 @@ export const updateWatchlistCategory = async (
 export const deleteWatchlistCategory = async (categoryId: string): Promise<boolean> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       throw new Error('User not authenticated');
     }
@@ -189,6 +189,80 @@ export const deleteWatchlistCategory = async (categoryId: string): Promise<boole
   }
 };
 
+/**
+ * Initialize default categories for a user
+ */
+export const initializeDefaultCategories = async (): Promise<boolean> => {
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return false;
+    }
+
+    // Check if categories already exist
+    const { count } = await supabase
+      .from('watchlist_categories')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', user.id);
+
+    if (count && count > 0) {
+      return true;
+    }
+
+    // Create default categories
+    const defaultCategories = [
+      {
+        name: 'Want to Watch',
+        description: 'Movies I want to watch',
+        icon: 'bookmark',
+        color: '#AB8BFF',
+        is_default: true,
+      },
+      {
+        name: 'Watching',
+        description: 'Movies I am currently watching',
+        icon: 'play',
+        color: '#4ECDC4',
+        is_default: true,
+      },
+      {
+        name: 'Completed',
+        description: 'Movies I have watched',
+        icon: 'check',
+        color: '#95E1D3',
+        is_default: true,
+      },
+      {
+        name: 'Favorites',
+        description: 'My all-time favorite movies',
+        icon: 'star',
+        color: '#FFD700',
+        is_default: true,
+      },
+    ];
+
+    const { error } = await supabase
+      .from('watchlist_categories')
+      .insert(
+        defaultCategories.map(cat => ({
+          user_id: user.id,
+          ...cat
+        }))
+      );
+
+    if (error) {
+      console.error('Error initializing default categories:', error);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error initializing default categories:', error);
+    return false;
+  }
+};
+
 // =====================================================
 // WATCHLIST ITEMS
 // =====================================================
@@ -199,7 +273,7 @@ export const deleteWatchlistCategory = async (categoryId: string): Promise<boole
 export const getWatchlistItems = async (categoryId?: string): Promise<WatchlistItem[]> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       return [];
     }
@@ -266,7 +340,7 @@ export const addToWatchlist = async (
 ): Promise<WatchlistItem | null> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       throw new Error('User not authenticated');
     }
@@ -327,7 +401,7 @@ export const updateWatchlistItem = async (
 ): Promise<WatchlistItem | null> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       throw new Error('User not authenticated');
     }
@@ -337,7 +411,7 @@ export const updateWatchlistItem = async (
     if (updates.watchProgress !== undefined) updateData.watch_progress = updates.watchProgress;
     if (updates.notes !== undefined) updateData.notes = updates.notes;
     if (updates.categoryId) updateData.category_id = updates.categoryId;
-    
+
     // If marking as completed, set watched_at
     if (updates.watchStatus === 'completed') {
       updateData.watched_at = new Date().toISOString();
@@ -383,7 +457,7 @@ export const updateWatchlistItem = async (
 export const removeFromWatchlist = async (itemId: string): Promise<boolean> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       throw new Error('User not authenticated');
     }
@@ -412,7 +486,7 @@ export const removeFromWatchlist = async (itemId: string): Promise<boolean> => {
 export const isMovieInWatchlist = async (movieId: number): Promise<boolean> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       return false;
     }
@@ -442,7 +516,7 @@ export const isMovieInWatchlist = async (movieId: number): Promise<boolean> => {
 export const getMovieWatchlistCategories = async (movieId: number): Promise<WatchlistCategory[]> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       return [];
     }
@@ -491,7 +565,7 @@ export const getWatchlistStats = async (): Promise<{
 }> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
-    
+
     if (!user) {
       return {
         totalItems: 0,

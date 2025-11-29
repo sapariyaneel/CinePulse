@@ -1,38 +1,49 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
-
-const useFetch = <T>(fetchFunction: () => Promise<T>, autoFetch = true ) => {
+const useFetch = <T>(fetchFunction: () => Promise<T>, autoFetch = true) => {
     const [data, setData] = useState<T | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
+    const isMounted = useRef(true);
 
-    const fetchData = async () => {
+    useEffect(() => {
+        isMounted.current = true;
+        return () => {
+            isMounted.current = false;
+        };
+    }, []);
+
+    const fetchData = useCallback(async () => {
         try {
-            setLoading(true);
-            setError(null)
+            if (isMounted.current) setLoading(true);
+            if (isMounted.current) setError(null);
 
             const result = await fetchFunction();
 
-            setData(result);
+            if (isMounted.current) setData(result);
         } catch (err) {
-            //@ts-ignore
-            setError(err instanceof Error ? err : new Error('An error occurred'));
+            if (isMounted.current) {
+                //@ts-ignore
+                setError(err instanceof Error ? err : new Error('An error occurred'));
+            }
         } finally {
-            setLoading(false);   
+            if (isMounted.current) setLoading(false);
         }
-    }
+    }, [fetchFunction]);
 
-    const reset = () => {
-        setData(null);
-        setLoading(false);
-        setError(null);
-    }
-
-    useEffect(() => {
-        if(autoFetch) {
-            fetchData();
+    const reset = useCallback(() => {
+        if (isMounted.current) {
+            setData(null);
+            setLoading(false);
+            setError(null);
         }
     }, []);
+
+    useEffect(() => {
+        if (autoFetch) {
+            fetchData();
+        }
+    }, [autoFetch, fetchData]);
 
     return { data, loading, error, refetch: fetchData, reset };
 }

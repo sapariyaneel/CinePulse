@@ -100,7 +100,11 @@ const SearchScreen = () => {
 
         // Call updateSearchCount only if there are results
         if (movies?.length! > 0 && movies?.[0]) {
-          await updateSearchCount(searchQuery, movies[0]);
+          try {
+            await updateSearchCount(searchQuery, movies[0]);
+          } catch (err) {
+            console.warn('Failed to update search count:', err);
+          }
         }
       } else {
         reset();
@@ -128,6 +132,10 @@ const SearchScreen = () => {
         numColumns={numColumns}
         contentContainerClassName="pb-20 sm:pb-24 md:pb-28 lg:pb-32"
         columnWrapperClassName="gap-2 sm:gap-3 md:gap-4 lg:gap-5 mb-3 sm:mb-4 md:mb-5 lg:mb-6"
+        initialNumToRender={6}
+        maxToRenderPerBatch={6}
+        windowSize={3}
+        removeClippedSubviews={true}
         ListHeaderComponent={
           <>
             {/* Logo Header */}

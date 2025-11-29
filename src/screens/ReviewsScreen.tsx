@@ -5,13 +5,15 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import type { RootStackNavigationProp } from '@/navigation/types';;
 import React, { useCallback, useState } from 'react';
-import { ActivityIndicator, Alert, FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import ReviewsSkeleton from '@/components/ReviewsSkeleton';
 
 const ReviewsScreen = () => {
   const navigation = useNavigation<RootStackNavigationProp>(); 
   const [reviews, setReviews] = useState<MovieReview[]>([]);
   const [loading, setLoading] = useState(true);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   const loadReviews = async () => {
     try {
@@ -25,6 +27,7 @@ const ReviewsScreen = () => {
       console.error('Error loading reviews:', error);
     } finally {
       setLoading(false);
+      setInitialLoad(false);
     }
   };
 
@@ -133,19 +136,8 @@ const ReviewsScreen = () => {
     </TouchableOpacity>
   );
 
-  if (loading) {
-    return (
-      <SafeAreaView className='bg-primary flex-1'>
-        <Image
-          source={images.bg}
-          className='absolute w-full h-full z-0'
-          resizeMode='cover'
-        />
-        <View className='flex-1 justify-center items-center'>
-          <ActivityIndicator size="large" color="#AB8BFF" />
-        </View>
-      </SafeAreaView>
-    );
+  if (loading && initialLoad) {
+    return <ReviewsSkeleton />
   }
 
   return (

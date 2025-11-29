@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { ActivityIndicator, Alert, FlatList, Image, Text, TouchableOpacity, View, useWindowDimensions } from "react-native";
+import { Alert, FlatList, Image, Text, TouchableOpacity, View, useWindowDimensions } from "react-native";
 import { X } from 'lucide-react-native';
 
 import { icons } from "@/constants/icons";
@@ -12,6 +12,7 @@ import { addToSearchHistory, clearSearchHistory, getSearchHistory, removeFromSea
 
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
+import SearchScreenSkeleton from "@/components/SearchScreenSkeleton";
 
 const SearchScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -148,12 +149,8 @@ const SearchScreen = () => {
             </View>
 
             {/* Loading Indicator */}
-            {loading && (
-              <ActivityIndicator
-                size="large"
-                color="#AB8BFF"
-                className="my-4 sm:my-5 md:my-6"
-              />
+            {loading && searchQuery.trim() && (!movies || movies.length === 0) && (
+              <SearchScreenSkeleton numColumns={numColumns} />
             )}
 
             {/* Error Message */}

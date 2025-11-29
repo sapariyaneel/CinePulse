@@ -4,269 +4,232 @@
 
 ### Your Premium Movie Companion
 
-<p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.2-blueviolet?style=for-the-badge" alt="Version">
-  <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Native">
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+![Version](https://img.shields.io/badge/version-1.0.2-blueviolet?style=for-the-badge)
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 
-  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
-</p>
+**A premium, feature-rich movie discovery platform with intelligent recommendations, comprehensive analytics, and social interactions.**
 
-<p align="center">
-  <strong>A premium, feature-rich movie discovery platform with intelligent recommendations, comprehensive analytics, and social interactions.</strong>
-</p>
-
-<p align="center">
-  <a href="#-download">📱 Download</a> •
-  <a href="#-fully-responsive-design">📱 Responsive</a> •
-  <a href="#-whats-new-in-v101">🎉 What's New</a> •
-  <a href="#-features">🌟 Features</a> •
-  <a href="#-quick-start">🚀 Quick Start</a> •
-  <a href="#-tech-stack">🛠️ Tech Stack</a> •
-  <a href="#-developer">👨‍💻 Developer</a>
-</p>
+[📱 Download](#-download) • [✨ Features](#-features) • [🚀 Quick Start](#-quick-start) • [🛠️ Tech Stack](#️-tech-stack)
 
 </div>
+
+---
 
 ## 📱 Download
 
 <div align="center">
 
-### Get CinePulse on Android
+[![Download APK](https://img.shields.io/badge/Download_APK-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/sapariyaneel/CinePulse/releases)
 
-<p>
-  <a href="https://github.com/sapariyaneel/CinePulse/releases">
-    <img src="https://img.shields.io/badge/Download_APK-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
-  </a>
-</p>
-
-<p>
-  Download the latest version from the <strong>Releases</strong> tab
-</p>
+**Get the latest version from the [Releases](https://github.com/sapariyaneel/CinePulse/releases) tab**
 
 </div>
 
-## 📱 Fully Responsive Design
+---
 
-<div align="center">
-
-**CinePulse adapts seamlessly to any screen size and orientation!**
-
-<table>
-<tr>
-<td align="center" width="33%">
-📱<br><strong>Small Phones</strong><br>
-<sub>Optimized layouts for compact screens</sub>
-</td>
-<td align="center" width="33%">
-📲<br><strong>Medium Phones</strong><br>
-<sub>Balanced grids and spacing</sub>
-</td>
-<td align="center" width="33%">
-📟<br><strong>Tablets</strong><br>
-<sub>Multi-column layouts for larger displays</sub>
-</td>
-</tr>
-</table>
-
-</div>
-
-## What's New in v1.0.1
-
-<div align="center">
-
-
-</div>
-
-### ✨ Major Updates
-
-#### 🎨 **Fully Responsive UI**
-- ✅ All screens now adapt to different screen sizes (phones to tablets)
-- ✅ Seamless portrait and landscape orientation support
-- ✅ Optimized layouts using NativeWind v4 responsive utilities
-- ✅ Dynamic sizing for movie posters, cards, and UI elements
-
-#### 🐛 **Bug Fixes**
-- ✅ Fixed movie posters not visible on My Reviews page
-- ✅ Resolved movie title overlapping with backdrop on Movie Details screen
-- ✅ Improved search history display and management
-- ✅ Fixed layout inconsistencies across different screen sizes
-
-#### ⚡ **Performance Optimizations**
-- ✅ **ProGuard enabled** - Code minification for faster app performance
-- ✅ **Split APKs** - Architecture-specific builds reduce download size by up to 50%
-- ✅ **Faster startup** - Optimized bundle loading and initialization
-- ✅ **Better caching** - Improved image and data caching mechanisms
-
-#### 🛠️ **Technical Improvements**
-- ✅ Migrated all styling to NativeWind utilities
-- ✅ Fixed TypeScript errors and linting issues
-- ✅ Enhanced code quality and maintainability
-- ✅ Updated build configuration for better optimization
-
-
-## 🌟 Features
+## ✨ Features
 
 ### 🏆 Premium Features
 
-#### 📚 Watchlist with Categories
-- Organize movies into **Want to Watch**, **Watching**, and **Completed**
-- Smart category filters with live counts
-- Single-tap category switching
-- Premium gradient badges
-- Seamless migration from saved movies
+**📚 Smart Watchlist Management**
+- Organize movies into Want to Watch, Watching, and Completed categories
+- Quick category switching with live counts
+- Premium gradient badges and seamless UI
 
-#### 📊 Movie Statistics Dashboard
-- **Total watch time** calculator (days/hours/minutes)
-- **Genre breakdown** with visual progress bars
-- **Watchlist breakdown** by category
-- **Movie records** (longest/shortest)
-- **Reviews this month/year** tracking
-- Real-time aggregate calculations
+**📊 Movie Statistics Dashboard**
+- Total watch time calculator (days/hours/minutes)
+- Genre breakdown with visual progress bars
+- Watchlist analytics by category
+- Movie records tracking (longest/shortest films)
+- Monthly and yearly review statistics
 
-#### 🧠 Personalized Recommendations
-- Smart **genre preference** analysis
-- "**Because you like [Genre]**" suggestions
+**🧠 Personalized Recommendations**
+- Genre preference analysis based on viewing history
+- "Because you like [Genre]" intelligent suggestions
 - Top 5 favorite genres with statistics
-- Similar movies based on viewing history
-- Fallback to popular movies for new users
+- Similar movies recommendations
 
-### ✨ Core Features
+### 🌟 Core Features
 
-#### 📝 Rating & Reviews
-- Comprehensive **rating analytics** dashboard
-- Visual **rating distribution** charts
-- Recent ratings timeline
-- Color-coded rating badges
-- Average rating calculations
-- Write and manage your reviews
+**📝 Rating & Reviews**
+- Comprehensive rating analytics dashboard
+- Visual rating distribution charts
+- Recent ratings timeline with color-coded badges
+- Write and manage detailed reviews
 
-#### 👍 Review Reactions
-- **Like** (❤️) and **Helpful** (👍) reactions
+**👍 Social Engagement**
+- Like ❤️ and Helpful 👍 reactions on reviews
 - Real-time reaction counts
-- Toggle reactions on/off
-- Guest-friendly viewing
-- Prevents self-reactions
-- Social engagement features
+- Guest-friendly viewing mode
+- Community interaction features
 
-#### 🔥 Trending & Discovery
-- Algorithm-based trending (top 9 movies)
-- Smart search with history
-- Movie details with cast & crew
-- Guest mode for browsing
-- Pull-to-refresh everywhere
+**🔥 Discovery & Trending**
+- Algorithm-based trending (top 9 movies in 30 days)
+- Smart search with history tracking
+- Detailed movie information with cast & crew
+- Pull-to-refresh across all screens
 - Latest releases section
 
+**📱 Responsive Design**
+- Seamless adaptation to all screen sizes
+- Portrait and landscape orientation support
+- Optimized for phones and tablets
+- Dynamic layouts using NativeWind v4
+
 ---
+
+## 📊 Project Overview
+
+<div align="center">
+
+| Premium Features | Custom Components | Database Tables | TypeScript Coverage |
+|:---------------:|:-----------------:|:---------------:|:-------------------:|
+| **5+** | **15+** | **10+** | **100%** |
+
+</div>
+
+---
+
+## 🆕 What's New in v1.0.2
+
+**🎨 UI/UX Improvements**
+- Fully responsive design for all devices
+- Fixed movie posters visibility on My Reviews page
+- Resolved title overlapping on Movie Details screen
+- Enhanced search history management
+
+**⚡ Performance Optimizations**
+- ProGuard enabled for code minification
+- Split APKs reduce download size by up to 50%
+- Faster startup with optimized bundle loading
+- Improved caching mechanisms
+
+**🛠️ Technical Updates**
+- Complete migration to NativeWind utilities
+- Fixed TypeScript and linting issues
+- Enhanced code quality and maintainability
+- Updated build configuration
+
+---
+
 ## 🛠️ Tech Stack
 
 <div align="center">
 
 <table>
 <tr>
-<td align="center" width="25%">
+<td align="center" width="20%">
 <img src="https://skillicons.dev/icons?i=react" width="48" height="48" alt="React Native" />
 <br><strong>React Native</strong>
 <br><sub>CLI v0.82</sub>
 </td>
-<td align="center" width="25%">
+<td align="center" width="20%">
 <img src="https://skillicons.dev/icons?i=typescript" width="48" height="48" alt="TypeScript" />
 <br><strong>TypeScript</strong>
 <br><sub>Type Safety</sub>
 </td>
-<td align="center" width="25%">
+<td align="center" width="20%">
 <img src="https://skillicons.dev/icons?i=tailwind" width="48" height="48" alt="NativeWind" />
 <br><strong>NativeWind v4</strong>
 <br><sub>Styling</sub>
 </td>
-<td align="center" width="25%">
+<td align="center" width="20%">
 <img src="https://skillicons.dev/icons?i=supabase" width="48" height="48" alt="Supabase" />
 <br><strong>Supabase</strong>
 <br><sub>Backend & Auth</sub>
 </td>
-</tr>
-<tr>
-<td align="center" width="25%">
+<td align="center" width="20%">
 <img src="https://skillicons.dev/icons?i=postgres" width="48" height="48" alt="PostgreSQL" />
 <br><strong>PostgreSQL</strong>
 <br><sub>Database</sub>
 </td>
-<td align="center" width="25%">
+</tr>
+<tr>
+<td align="center" width="20%">
 <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" width="48" height="48" alt="TMDB" />
 <br><strong>TMDB API</strong>
 <br><sub>Movie Data</sub>
 </td>
-<td align="center" width="25%">
+<td align="center" width="20%">
 <img src="https://skillicons.dev/icons?i=github" width="48" height="48" alt="GitHub" />
 <br><strong>GitHub</strong>
 <br><sub>Version Control</sub>
 </td>
-<td align="center" width="25%">
+<td align="center" width="20%">
 <img src="https://skillicons.dev/icons?i=vscode" width="48" height="48" alt="VS Code" />
 <br><strong>VS Code</strong>
 <br><sub>IDE</sub>
+</td>
+<td align="center" width="20%">
+</td>
+<td align="center" width="20%">
 </td>
 </tr>
 </table>
 
 </div>
 
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ installed
+
+- Node.js 18+
 - Java Development Kit (JDK) 17
 - Android Studio & Android SDK
-- TMDB API key ([Get it here](https://www.themoviedb.org/settings/api))
-- Supabase account ([Sign up here](https://supabase.com))
+- [TMDB API Key](https://www.themoviedb.org/settings/api)
+- [Supabase Account](https://supabase.com)
 
-### Installation
+### Installation Steps
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/sapariyaneel/CinePulse.git
-   cd CinePulse
-   ```
+**1. Clone the repository**
+```bash
+git clone https://github.com/sapariyaneel/CinePulse.git
+cd CinePulse
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+**2. Install dependencies**
+```bash
+npm install
+```
 
-3. **Set up environment variables**
-   
-   Copy `.env.example` to `.env` and fill in your credentials:
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Update `.env` with your keys:
-   ```env
-   MOVIE_API_KEY=your_tmdb_api_key_here
-   SUPABASE_PROJECT_URL=https://your-project.supabase.co
-   SUPABASE_API_KEY=your_supabase_anon_key_here
-   ```
+**3. Configure environment variables**
 
-4. **Set up Supabase database**
-   
-   Run these SQL scripts in your Supabase SQL Editor (in order):
-   ```bash
-   1. SUPABASE_SCHEMA.sql              # Core tables
-   2. TRENDING_MOVIES_SCHEMA.sql       # Trending algorithm
-   3. WATCHLIST_CATEGORIES_SCHEMA.sql  # Watchlist features
-   4. REVIEW_REACTIONS_SCHEMA.sql      # Review reactions
-   5. FIX_ALL_RLS_POLICIES.sql         # Security policies
-   ```
+Copy `.env.example` to `.env`:
+```bash
+cp .env.example .env
+```
 
-5. **Start the Metro Bundler**
-   ```bash
-   npm start
-   ```
+Update `.env` with your credentials:
+```env
+MOVIE_API_KEY=your_tmdb_api_key_here
+SUPABASE_PROJECT_URL=https://your-project.supabase.co
+SUPABASE_API_KEY=your_supabase_anon_key_here
+```
 
-6. **Run on Android**
-   ```bash
-   npm run android
-   ```
+**4. Set up Supabase database**
+
+Run these SQL scripts in your Supabase SQL Editor (in order):
+1. `SUPABASE_SCHEMA.sql` - Core tables
+2. `TRENDING_MOVIES_SCHEMA.sql` - Trending algorithm
+3. `WATCHLIST_CATEGORIES_SCHEMA.sql` - Watchlist features
+4. `REVIEW_REACTIONS_SCHEMA.sql` - Review reactions
+5. `FIX_ALL_RLS_POLICIES.sql` - Security policies
+
+**5. Start development server**
+```bash
+npm start
+```
+
+**6. Run on Android**
+```bash
+npm run android
+```
+
+---
 
 ## 📁 Project Structure
 
@@ -275,99 +238,98 @@ src/
 ├── components/          # Reusable UI components
 │   ├── MovieCard.tsx
 │   ├── TrendingCard.tsx
-│   ├── WatchlistCard.tsx
-│   └── ...
+│   └── WatchlistCard.tsx
 ├── screens/             # Application screens
 │   ├── HomeScreen.tsx
 │   ├── SearchScreen.tsx
 │   ├── SavedScreen.tsx
-│   ├── ProfileScreen.tsx
-│   ├── MovieDetailsScreen.tsx
-│   └── ...
+│   └── ProfileScreen.tsx
 ├── navigation/          # Navigation configuration
-│   ├── RootNavigator.tsx
-│   └── types.ts
+│   └── RootNavigator.tsx
 ├── services/            # API and backend services
-│   ├── api.ts                   # TMDB API integration
-│   ├── supabase.ts              # Supabase client
-│   ├── authService.ts           # Authentication
-│   ├── trendingService.ts       # Trending movies
-│   └── ...
-├── assets/              # Images, fonts, and static files
-├── constants/           # App constants (colors, icons)
+│   ├── api.ts           # TMDB API integration
+│   ├── supabase.ts      # Supabase client
+│   └── authService.ts   # Authentication
+├── assets/              # Images, fonts, static files
+├── constants/           # App constants
 ├── interfaces/          # TypeScript definitions
 └── types/               # Global types
 ```
 
-## 🗄️ Database Schema
+---
 
-### Tables
-- **users** - User profiles with username, name, email, avatar
-- **watchlist_categories** - User's custom watchlist categories
-- **watchlist_items** - Movies in watchlist with category assignment
-- **reviews** - Movie reviews with ratings and text
-- **review_reactions** - Like and helpful reactions on reviews
-- **movie_searches** - Tracks movie views for trending algorithm
+## 🗄️ Database Architecture
 
-### Views
-- **trending_movies** - Top 9 most viewed movies in last 30 days
-- **review_reaction_counts** - Aggregated reaction counts per review
+### Core Tables
+- **users** - User profiles with authentication data
+- **watchlist_categories** - Custom watchlist categories
+- **watchlist_items** - Movies with category assignments
+- **reviews** - Movie reviews with ratings
+- **review_reactions** - Social engagement (likes, helpful)
+- **movie_searches** - View tracking for trending algorithm
 
-### Functions & Triggers
-- **check_username_available()** - Validates username uniqueness
-- **create_default_categories()** - Auto-creates categories for new users
-- **create_categories_for_existing_users()** - Migration for existing users
+### Views & Functions
+- **trending_movies** - Top 9 most viewed movies (30 days)
+- **review_reaction_counts** - Aggregated reaction statistics
+- **check_username_available()** - Username validation
+- **create_default_categories()** - Auto-setup for new users
 
-## 🔐 Security
+### Security
+- Row Level Security (RLS) enabled on all tables
+- User-scoped data with proper RLS policies
+- Public read access for reviews and profiles
+- Authenticated write access for user data
+- Environment variables for API keys
 
-- **Row Level Security (RLS)** enabled on all tables
-- **Secure database functions** for username validation
-- **Password hashing** handled by Supabase Auth
-- **Environment variables** for sensitive API keys
-- **Guest mode** with read-only permissions
-- **User-scoped data** with proper RLS policies
-- **Public read access** for reviews and user profiles
-- **Authenticated write access** for user data
+---
 
-## 🎯 Key Features Explained
+## 🎯 Key Technical Implementations
 
 ### 🔥 Trending Algorithm
-Movies are ranked by view count in the last 30 days. Every time a user views a movie details page, it's tracked in the `movie_searches` table. The `trending_movies` view aggregates this data to show the top 9 unique movies.
+Movies are ranked by view count over the last 30 days. Each movie detail view is tracked in the `movie_searches` table, and the `trending_movies` view aggregates this data to display the top 9 unique movies.
 
 ### 🧠 Recommendation Engine
-Analyzes your watchlist and reviews to extract genre preferences. Fetches movie details from TMDB API, calculates genre weights, and provides personalized "Because you like [Genre]" suggestions from your top 3 favorite genres.
+The system analyzes watchlist and review data to extract genre preferences, calculates genre weights, and provides personalized suggestions based on your top 3 favorite genres using TMDB API data.
 
-### 📊 Statistics Dashboard
-Real-time aggregate calculations across multiple tables. Fetches runtime data from TMDB API to calculate total watch time. Groups movies by genre and category to provide visual breakdowns with percentages.
+### 📊 Real-time Analytics
+Statistics dashboard performs real-time aggregate calculations across multiple tables, fetches runtime data from TMDB API for total watch time, and groups movies by genre and category for visual breakdowns.
 
-### 👍 Review Reactions
-Users can react to reviews with Like (❤️) and Helpful (👍). Reactions are stored in a separate table with unique constraints to prevent duplicates. A PostgreSQL view efficiently aggregates reaction counts for display.
+### 👍 Social Reactions
+Users can react to reviews with Like and Helpful reactions. A PostgreSQL view efficiently aggregates reaction counts with unique constraints to prevent duplicate reactions.
 
-### 📚 Watchlist Categories
-Each user gets three default categories (Want to Watch, Watching, Completed) automatically created via database triggers. Movies can be assigned to one category at a time, with easy switching through a premium modal interface.
+---
 
 ## 📸 Screenshots
 
 <div align="center">
+
+### Authentication
 <p>
-  <img width="300" height="800" alt="login" src="https://github.com/user-attachments/assets/35356066-75a2-46d2-8752-1bbc90fe400c" />
-  <img width="300" height="800" alt="register" src="https://github.com/user-attachments/assets/0a08fb6a-d433-4fb9-8988-079b02a9e54f" />
+  <img width="300" alt="login" src="https://github.com/user-attachments/assets/35356066-75a2-46d2-8752-1bbc90fe400c" />
+  <img width="300" alt="register" src="https://github.com/user-attachments/assets/0a08fb6a-d433-4fb9-8988-079b02a9e54f" />
 </p>
+
+### Home & Details
 <p>
-  <img width="300" height="800" alt="home-screen" src="https://github.com/user-attachments/assets/aa2c7a33-af5a-41e9-9677-4fed46ecfb8f" />
-  <img width="300" height="800" alt="movie-details=screen" src="https://github.com/user-attachments/assets/195c779b-e052-4e29-b210-ed7ea9222f94" />
+  <img width="300" alt="home-screen" src="https://github.com/user-attachments/assets/aa2c7a33-af5a-41e9-9677-4fed46ecfb8f" />
+  <img width="300" alt="movie-details" src="https://github.com/user-attachments/assets/195c779b-e052-4e29-b210-ed7ea9222f94" />
 </p>
+
+### Search & Watchlist
 <p>
-  <img width="300" height="800" alt="search-screen" src="https://github.com/user-attachments/assets/0e679805-f1fe-41a0-9576-c275fc36bf07" />
-  <img width="300" height="800" alt="saved/watchlist" src="https://github.com/user-attachments/assets/27013df5-37f8-4a03-8e0e-bcb3036629f5" />
+  <img width="300" alt="search-screen" src="https://github.com/user-attachments/assets/0e679805-f1fe-41a0-9576-c275fc36bf07" />
+  <img width="300" alt="watchlist" src="https://github.com/user-attachments/assets/27013df5-37f8-4a03-8e0e-bcb3036629f5" />
 </p>
+
+### Profile & Analytics
 <p>
-  <img width="300" height="800" alt="profile-1" src="https://github.com/user-attachments/assets/7a9b4553-e72c-4a56-8627-d031d1ce499d" />
-  <img width="300" height="800" alt="profile-2" src="https://github.com/user-attachments/assets/1664a187-d9f3-407a-a3aa-0550a4ba7597" />
+  <img width="300" alt="profile-1" src="https://github.com/user-attachments/assets/7a9b4553-e72c-4a56-8627-d031d1ce499d" />
+  <img width="300" alt="profile-2" src="https://github.com/user-attachments/assets/1664a187-d9f3-407a-a3aa-0550a4ba7597" />
 </p>
+
 <p>
-  <img width="300" height="800" alt="profile-3" src="https://github.com/user-attachments/assets/96e99752-a61b-48a7-b357-f8d4d6a91b79" />
-  <img width="300" height="800" alt="profile-4" src="https://github.com/user-attachments/assets/2af4882c-03db-4753-8320-0fb3c415206d" />
+  <img width="300" alt="profile-3" src="https://github.com/user-attachments/assets/96e99752-a61b-48a7-b357-f8d4d6a91b79" />
+  <img width="300" alt="profile-4" src="https://github.com/user-attachments/assets/2af4882c-03db-4753-8320-0fb3c415206d" />
 </p>
 
 </div>
@@ -376,82 +338,28 @@ Each user gets three default categories (Want to Watch, Watching, Completed) aut
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to open issues and pull requests.
+Contributions are welcome! Here's how you can help:
 
 1. Fork the repository
-2. Create your feature branch (e.g., `git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to your branch (e.g., `git push origin feature/AmazingFeature`)
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-**Note:** Branch names are examples - create descriptive branch names based on your feature.
+---
 
 ## 👨‍💻 Developer
 
 <div align="center">
 
-<img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" width="400">
+### Neel Sapariya
 
-### **Neel Sapariya**
+*Full-Stack Developer | React Native Enthusiast | UI/UX Designer*
 
-<p>
-<em>Full-Stack Developer | React Native Enthusiast | UI/UX Designer</em>
-</p>
+Passionate about creating beautiful, functional mobile applications with cutting-edge technology.
 
-<p>
-Passionate about creating beautiful, functional mobile applications with cutting-edge technology. <br>
-Specializing in React Native, TypeScript, and modern backend solutions.
-</p>
-
-<p>
-  <a href="https://github.com/sapariyaneel">
-    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
-  </a>
-  <a href="mailto:workwithneel@outlook.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
-  </a>
-</p>
-
-<hr>
-
-### 🌟 Project Highlights
-
-<table>
-<tr>
-<td align="center">
-<strong>5+</strong><br>
-<sub>Premium Features</sub>
-</td>
-<td align="center">
-<strong>15+</strong><br>
-<sub>Custom Components</sub>
-</td>
-<td align="center">
-<strong>10+</strong><br>
-<sub>Database Tables</sub>
-</td>
-<td align="center">
-<strong>100%</strong><br>
-<sub>TypeScript</sub>
-</td>
-</tr>
-</table>
-
-</div>
-
----
-
-## 🙏 Acknowledgments
-
-<div align="center">
-
-**Special thanks to:**
-
- [**TMDB**](https://www.themoviedb.org/) - For the comprehensive movie database API
-
- [**Supabase**](https://supabase.com/) - For the powerful backend infrastructure
-
- [**NativeWind**](https://www.nativewind.dev/) - For bringing Tailwind CSS to React Native
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sapariyaneel)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:workwithneel@outlook.com)
 
 </div>
 
@@ -459,28 +367,18 @@ Specializing in React Native, TypeScript, and modern backend solutions.
 
 ## 📝 License
 
-<div align="center">
+MIT License - Copyright © 2025 Neel Sapariya
 
-**MIT License**
-
-Copyright 2025 Neel Sapariya
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-</div>
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.
 
 ---
 
 <div align="center">
 
-### ⭐ If you like this project, please give it a star! ⭐
+**⭐ Star this project if you find it helpful! ⭐**
 
-<hr>
+Made with ❤️ by Neel Sapariya
 
-**Made with ❤️ and ☕ by Neel Sapariya**
-
-<sub>Built with React Native • Powered by Supabase • Designed with Passion</sub>
+*Built with React Native • Powered by Supabase • Designed with Passion*
 
 </div>

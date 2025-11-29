@@ -5,6 +5,7 @@ import { Image, Text, TouchableOpacity, View, useWindowDimensions } from "react-
 import { useMemo } from "react";
 
 import { images } from "@/constants/images";
+import OptimizedImage from "./OptimizedImage";
 
 const TrendingCard = ({
   movie: { movie_id, movie_title, poster_path },
@@ -44,8 +45,8 @@ const TrendingCard = ({
       style={{ width: cardDimensions.width, paddingLeft: width < 360 ? 12 : 20 }}
       onPress={() => navigation.navigate('MovieDetails', { id: String(movie_id) })}
     >
-      <Image
-        source={{ uri: posterUrl }}
+      <OptimizedImage
+        uri={posterUrl}
         style={{ width: cardDimensions.width, height: cardDimensions.height }}
         className="rounded-lg sm:rounded-xl md:rounded-2xl"
         resizeMode="cover"

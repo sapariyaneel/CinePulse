@@ -147,6 +147,15 @@ const HomeScreen = () => {
                     <TrendingCard movie={item} index={index} />
                   )}
                   keyExtractor={(item, index) => `${item.movie_id}-${index}`}
+                  initialNumToRender={3}
+                  maxToRenderPerBatch={3}
+                  windowSize={5}
+                  removeClippedSubviews={true}
+                  getItemLayout={(data, index) => ({
+                    length: width < 360 ? 100 : width < 600 ? 128 : width < 900 ? 160 : 200,
+                    offset: (width < 360 ? 100 : width < 600 ? 128 : width < 900 ? 160 : 200) * index,
+                    index,
+                  })}
                 />
               </View>
             ) : (
@@ -171,6 +180,10 @@ const HomeScreen = () => {
                   contentContainerClassName="gap-3 sm:gap-4 md:gap-5"
                   renderItem={({ item }) => <RecommendationCard movie={item} />}
                   keyExtractor={(item) => item.id.toString()}
+                  initialNumToRender={3}
+                  maxToRenderPerBatch={3}
+                  windowSize={5}
+                  removeClippedSubviews={true}
                 />
               </View>
             )}
@@ -191,6 +204,10 @@ const HomeScreen = () => {
                   columnWrapperClassName="gap-x-2 sm:gap-x-3 md:gap-x-4 lg:gap-x-5 justify-center"
                   className="mt-2"
                   scrollEnabled={false}
+                  initialNumToRender={6}
+                  maxToRenderPerBatch={6}
+                  windowSize={3}
+                  removeClippedSubviews={true}
                 />
               </View>
             </View>

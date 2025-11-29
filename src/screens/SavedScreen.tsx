@@ -1,7 +1,7 @@
 import { icons } from '@/constants/icons'
 import { images } from '@/constants/images'
 import { canSaveMovies } from '@/services/authService'
-import { getWatchlistCategories, getWatchlistItems } from '@/services/watchlistService'
+import { getWatchlistCategories, getWatchlistItems, initializeDefaultCategories } from '@/services/watchlistService'
 import { useFocusEffect } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import type { TabNavigationProp } from '@/navigation/types';
@@ -97,7 +97,16 @@ const SavedScreen = () => {
       setIsAuthenticated(canSave)
       
       if (canSave) {
-        const userCategories = await getWatchlistCategories()
+        let userCategories = await getWatchlistCategories()
+        
+        // If no categories found, try to initialize defaults
+        if (userCategories.length === 0) {
+          const initialized = await initializeDefaultCategories();
+          if (initialized) {
+            userCategories = await getWatchlistCategories();
+          }
+        }
+        
         setCategories(userCategories)
         
         // Load all items initially
@@ -213,10 +222,21 @@ const SavedScreen = () => {
             <View className='w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full bg-dark-100 items-center justify-center mb-4 sm:mb-5 md:mb-6 border border-light-300/20'>
               <Image source={icons.save} className='w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14' tintColor='#A8B5DB' />
             </View>
-            <Text className='text-white text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 sm:mb-2.5'>Setup Required</Text>
-            <Text className='text-light-300 text-xs sm:text-sm md:text-base text-center mb-6 sm:mb-7 md:mb-8'>
-              Please run the database migration to enable watchlist categories
-            </Text>
+            {__DEV__ ? (
+              <>
+                <Text className='text-white text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 sm:mb-2.5'>Setup Required</Text>
+                <Text className='text-light-300 text-xs sm:text-sm md:text-base text-center mb-6 sm:mb-7 md:mb-8'>
+                  Please run the database migration to enable watchlist categories
+                </Text>
+              </>
+            ) : (
+              <>
+                <Text className='text-white text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 sm:mb-2.5'>No Categories Found</Text>
+                <Text className='text-light-300 text-xs sm:text-sm md:text-base text-center mb-6 sm:mb-7 md:mb-8'>
+                  We couldn't load your watchlist categories. Please try pulling down to refresh.
+                </Text>
+              </>
+            )}
           </View>
         ) : watchlistItems.length > 0 ? (
           <FlatList
@@ -238,6 +258,10 @@ const SavedScreen = () => {
             }}
             contentContainerStyle={{ paddingBottom: isLandscape ? 80 : 100 }}
             showsVerticalScrollIndicator={false}
+            initialNumToRender={6}
+            maxToRenderPerBatch={6}
+            windowSize={3}
+            removeClippedSubviews={true}
           />
         ) : (
           <View className='flex-1 items-center justify-center px-6 sm:px-8 md:px-10'>

@@ -8,7 +8,7 @@ export interface AuthUser {
   isGuest: boolean;
   isAuthenticated: boolean;
   userId?: string;
-} 
+}
 
 // Check if user has completed onboarding
 export const hasCompletedOnboarding = async (): Promise<boolean> => {
@@ -153,4 +153,23 @@ export const logoutUser = async (): Promise<void> => {
 export const canSaveMovies = async (): Promise<boolean> => {
   const authState = await getAuthState();
   return authState.isAuthenticated && !authState.isGuest;
+};
+
+// Restore session from Supabase
+export const restoreSession = async (): Promise<void> => {
+  try {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) {
+      // Ensure AUTH_KEY is set correctly
+      const authState: AuthUser = {
+        isGuest: false,
+        isAuthenticated: true,
+        userId: session.user.id,
+      };
+      await AsyncStorage.setItem(AUTH_KEY, JSON.stringify(authState));
+      await completeOnboarding();
+    }
+  } catch (error) {
+    console.error('Error restoring session:', error);
+  }
 };

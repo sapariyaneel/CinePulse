@@ -4,7 +4,7 @@
 
 ### Your Premium Movie Companion
 
-![Version](https://img.shields.io/badge/version-1.0.2-blueviolet?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.0.3-blueviolet?style=for-the-badge)
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
@@ -92,25 +92,48 @@
 
 ---
 
-## 🆕 What's New in v1.0.2
+## 🆕 What's New in v1.0.3
 
-**🎨 UI/UX Improvements**
-- Fully responsive design for all devices
-- Fixed movie posters visibility on My Reviews page
-- Resolved title overlapping on Movie Details screen
-- Enhanced search history management
+**Automatic Update Detection**
+  - Automatic update check on app launch
+  - Semantic versioning used for accurate version comparison
+  - Supports both forced and optional update flows
 
-**⚡ Performance Optimizations**
-- ProGuard enabled for code minification
-- Split APKs reduce download size by up to 50%
-- Faster startup with optimized bundle loading
-- Improved caching mechanisms
+**Device-Specific APK Distribution**
+  - Detects device CPU architecture automatically
+  - Smart APK selection with universal fallback option
+  - Reduced download size based on device ABI
 
-**🛠️ Technical Updates**
-- Complete migration to NativeWind utilities
-- Fixed TypeScript and linting issues
-- Enhanced code quality and maintainability
-- Updated build configuration
+**Intelligent Permission Management**
+  - Pre-download permission checks to avoid wasted bandwidth
+  - Detects when users return from Settings after granting permissions
+  - Seamless continuation of downloads without manual retry
+  - Clear visual guidance during permission requests
+
+**⬇️ Download Management**
+- Real-time download progress with visual indicators
+- Cancellable downloads with automatic cleanup
+- Resume support for interrupted downloads
+- Efficient file handling in the app cache directory
+
+**📦 Installation Flow**
+- Integrated with native Android package installer (via FileProvider)
+- Automatic handling of unknown-sources permissions (Android 8.0+)
+- Direct navigation to installation-related settings
+- Smart persistence of APK file until installation succeeds
+
+**🧑‍💻 User Experience**
+- Forced updates that prevent app usage until completed
+- Optional updates with “Remind Me Later” option
+- Full-screen modals covering system UI for consistent design
+- Clear and actionable error messages
+- Visually distinct states for each update phase
+
+**🚀 Release Management**
+- Interactive CLI tools for creating and updating releases
+- Supabase integration for centralized release metadata handling
+- Support for version-specific configurations and release notes
+- URL validation and accessibility checks for APK links
 
 ---
 

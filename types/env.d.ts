@@ -6,6 +6,8 @@ declare module '@env' {
     export const SUPABASE_PROJECT_URL: string;
     export const SUPABASE_API_KEY: string;
     export const SUPABASE_URI: string;
+    export const FORCE_UPDATE_GLOBAL: string;
+    export const AUTO_PROMPT_INSTALL_PERMISSION: string;
 }
 
 // Image file declarations

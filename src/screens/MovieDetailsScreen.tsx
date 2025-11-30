@@ -8,7 +8,7 @@ import { isMovieInWatchlist } from '@/services/watchlistService';
 import useFetch from '@/services/useFetch';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import type { MovieDetailsRouteProp, RootStackNavigationProp } from '@/navigation/types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { ActivityIndicator, Alert, FlatList, Image, Modal, ScrollView, Text, TextInput, TouchableOpacity, View, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CategoryModal from '@/components/CategoryModal'
@@ -43,21 +43,10 @@ const MovieDetailsScreen = () => {
   const [reviews, setReviews] = useState<MovieReview[]>([]);
   const [userReview, setUserReview] = useState<MovieReview | null>(null);
 
-  const { data: movie, loading } = useFetch(() => fetchMovieDetails(String(id)));
-  const { data: credits, loading: creditsLoading } = useFetch(() => fetchMovieCredits(String(id)));
+  const { data: movie, loading } = useFetch(() => fetchMovieDetails(String(id)), { dependencies: [id] });
+  const { data: credits, loading: creditsLoading } = useFetch(() => fetchMovieCredits(String(id)), { dependencies: [id] });
 
-  useEffect(() => {
-    checkIfSaved();
-    loadReviews();
-  }, [id]);
-
-  useEffect(() => {
-    if (movie) {
-      trackMovieView();
-    }
-  }, [movie]);
-
-  const trackMovieView = async () => {
+  const trackMovieView = useCallback(async () => {
     if (!movie) return;
     const userId = await getCurrentUserId();
     await trackMovieSearch(
@@ -68,9 +57,9 @@ const MovieDetailsScreen = () => {
       movie.release_date,
       userId || undefined
     );
-  };
+  }, [movie]);
 
-  const loadReviews = async () => {
+  const loadReviews = useCallback(async () => {
     const movieReviews = await getMovieReviews(Number(id));
     setReviews(movieReviews);
     const userRev = await getUserReviewForMovie(Number(id));
@@ -79,12 +68,23 @@ const MovieDetailsScreen = () => {
       setRating(userRev.rating);
       setReviewText(userRev.review);
     }
-  };
+  }, [id]);
 
-  const checkIfSaved = async () => {
+  const checkIfSaved = useCallback(async () => {
     const saved = await isMovieInWatchlist(Number(id));
     setIsSaved(saved);
-  };
+  }, [id]);
+
+  useEffect(() => {
+    checkIfSaved();
+    loadReviews();
+  }, [checkIfSaved, loadReviews]);
+
+  useEffect(() => {
+    if (movie) {
+      trackMovieView();
+    }
+  }, [movie, trackMovieView]);
 
   const handleOpenReviewModal = async () => {
     const canSave = await canSaveMovies();

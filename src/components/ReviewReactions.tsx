@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import { icons } from '@/constants/icons';
 import { Heart, ThumbsUp } from 'lucide-react-native';
@@ -21,20 +21,20 @@ const ReviewReactions: React.FC<ReviewReactionsProps> = ({ reviewId, isOwnReview
   const [loading, setLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  const checkAuth = useCallback(async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    setIsAuthenticated(!!user);
+  }, []);
+
+  const loadReactions = useCallback(async () => {
+    const data = await getReviewWithReactions(reviewId);
+    setReactions(data);
+  }, [reviewId]);
+
   useEffect(() => {
     loadReactions();
     checkAuth();
-  }, [reviewId]);
-
-  const checkAuth = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    setIsAuthenticated(!!user);
-  };
-
-  const loadReactions = async () => {
-    const data = await getReviewWithReactions(reviewId);
-    setReactions(data);
-  };
+  }, [loadReactions, checkAuth]);
 
   const handleToggleReaction = async (type: 'like' | 'helpful') => {
     if (!isAuthenticated) {

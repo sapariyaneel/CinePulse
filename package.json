@@ -1,6 +1,6 @@
 {
   "name": "com.cinepulse.app",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -23,7 +23,6 @@
     "nativewind": "^4.2.1",
     "react": "19.1.1",
     "react-native": "0.82.1",
-    "react-native-appwrite": "^0.18.0",
     "react-native-bootsplash": "^6.3.11",
     "react-native-device-info": "^15.0.1",
     "react-native-dotenv": "^3.4.11",

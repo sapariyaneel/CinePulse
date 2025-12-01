@@ -62,8 +62,8 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ movie }) => {
         </View>
 
         {/* Recommendation Reason Badge */}
-        <View className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-1.5 sm:p-2 md:p-3 rounded-b-xl sm:rounded-b-2xl md:rounded-b-3xl">
-          <Text className="text-accent text-[10px] sm:text-xs md:text-sm font-medium" numberOfLines={2}>
+        <View className="absolute bottom-0 left-0 right-0 bg-accent p-2 sm:p-2.5 md:p-3 rounded-b-xl sm:rounded-b-2xl md:rounded-b-3xl">
+          <Text className="text-secondary text-[10px] sm:text-xs md:text-sm font-bold text-center" numberOfLines={2}>
             {movie.reason}
           </Text>
         </View>

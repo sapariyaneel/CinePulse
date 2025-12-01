@@ -340,7 +340,7 @@ const ProfileScreen = () => {
           <ProfileOption 
             icon={icons.star}
             title='About'
-            subtitle='CinePulse v1.0.2 by Neel Sapariya'
+            subtitle='CinePulse v1.0.4 by Neel Sapariya'
             onPress={() => navigation.navigate('About')}
           />
         </View>

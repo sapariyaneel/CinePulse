@@ -4,7 +4,7 @@
 
 ### Your Premium Movie Companion
 
-![Version](https://img.shields.io/badge/version-1.0.3-blueviolet?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.0.4-blueviolet?style=for-the-badge)
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
@@ -92,50 +92,61 @@
 
 ---
 
-## 🆕 What's New in v1.0.3
+## 🆕 What's New in v1.0.4
 
-**Automatic Update Detection**
-  - Automatic update check on app launch
-  - Semantic versioning used for accurate version comparison
-  - Supports both forced and optional update flows
+**Personalized Movie Recommendations**
+  - Intelligent recommendation engine based on user watchlist and behavior
+  - Genre preference analysis for highly relevant suggestions
+  - Fallback to popular movies for first-time users
+  - “Because you like [Genre]” reasoning displayed on recommendation cards
+  - New "Recommended For You" section on the home screen
 
-**Device-Specific APK Distribution**
-  - Detects device CPU architecture automatically
-  - Smart APK selection with universal fallback option
-  - Reduced download size based on device ABI
+**Progressive Content Loading**
+  - Parallel loading of trending and recommendation sections for faster first paint
+  - Sequential loading of latest movies to minimize initial load time
+  - Section-specific skeleton loaders for better perceived performance
+  - Background preloading of heavy content sections
 
-**Intelligent Permission Management**
-  - Pre-download permission checks to avoid wasted bandwidth
-  - Detects when users return from Settings after granting permissions
-  - Seamless continuation of downloads without manual retry
-  - Clear visual guidance during permission requests
+**Enhanced Visual Design**
+  - High-contrast recommendation badges with clearer visibility
+  - Bold typography for recommendation explanations
+  - Improved layout hierarchy across home screen modules
+  - Smoother skeleton loading transitions
 
-**⬇️ Download Management**
-- Real-time download progress with visual indicators
-- Cancellable downloads with automatic cleanup
-- Resume support for interrupted downloads
-- Efficient file handling in the app cache directory
+**⚙️ Technical Improvements**
+  - TMDB API migrated to Authorization Bearer tokens
+  - Consistent header-based authentication across all services
+  - Fixed genre ID mapping for accurate content classification
+  - Improved error handling for the recommendation pipeline
 
-**📦 Installation Flow**
-- Integrated with native Android package installer (via FileProvider)
-- Automatic handling of unknown-sources permissions (Android 8.0+)
-- Direct navigation to installation-related settings
-- Smart persistence of APK file until installation succeeds
+**🚀 Performance Optimization**
+  - Parallel API requests for trending and recommended content
+  - Reduced home screen time-to-interactive
+  - Optimized data-fetch strategy to prevent render blocking
+  - Independent granular loading states for seamless updates
 
-**🧑‍💻 User Experience**
-- Forced updates that prevent app usage until completed
-- Optional updates with “Remind Me Later” option
-- Full-screen modals covering system UI for consistent design
-- Clear and actionable error messages
-- Visually distinct states for each update phase
+**🧼 Code Quality & Architecture**
+  - Refactored HomeScreen to fix React Hooks rule violations
+  - Removed conditional hooks and stabilized render flow
+  - Centralized shimmer/skeleton animation system
+  - Modular skeleton components for reuse across screens
+  - Improved TypeScript interfaces for recommendation data
+  - Enhanced error boundaries to handle failures gracefully
 
-**🚀 Release Management**
-- Interactive CLI tools for creating and updating releases
-- Supabase integration for centralized release metadata handling
-- Support for version-specific configurations and release notes
-- URL validation and accessibility checks for APK links
+**🎯 User Experience Improvements**
+  - Trending and recommendations now appear together for faster discovery
+  - Latest movies load in the background without blocking UI
+  - No layout shifts during progressive loading
+  - Clear visual separation between each content category
 
----
+**🛠️ Bug Fixes**
+  - Resolved React Hooks ordering crash
+  - Fixed recommendation section failing to load on startup
+  - Corrected TMDB authentication issues blocking API calls
+  - Eliminated race conditions in sequential loading logic
+  - Improved visibility of recommendation reasons
+  - Fixed delayed loading in trending/recommendation sections
+
 
 ## 🛠️ Tech Stack
 

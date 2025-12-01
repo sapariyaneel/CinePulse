@@ -6,7 +6,6 @@ import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 
 import { fetchMovies } from "@/services/api";
-import { updateSearchCount } from "@/services/appwrite";
 import useFetch from "@/services/useFetch";
 import { addToSearchHistory, clearSearchHistory, getSearchHistory, removeFromSearchHistory, SearchHistoryItem } from "@/services/searchHistoryService";
 
@@ -97,15 +96,6 @@ const SearchScreen = () => {
         // Add to search history
         await addToSearchHistory(searchQuery);
         await loadSearchHistory();
-
-        // Call updateSearchCount only if there are results
-        if (movies?.length! > 0 && movies?.[0]) {
-          try {
-            await updateSearchCount(searchQuery, movies[0]);
-          } catch (err) {
-            console.warn('Failed to update search count:', err);
-          }
-        }
       } else {
         reset();
         setShowHistory(true);
@@ -131,7 +121,7 @@ const SearchScreen = () => {
         key={numColumns} // Force re-render when columns change
         numColumns={numColumns}
         contentContainerClassName="pb-20 sm:pb-24 md:pb-28 lg:pb-32"
-        columnWrapperClassName="gap-2 sm:gap-3 md:gap-4 lg:gap-5 mb-3 sm:mb-4 md:mb-5 lg:mb-6"
+        columnWrapperClassName="gap-2 sm:gap-3 md:gap-4 lg:gap-5 mb-3 sm:mb-4 md:mb-5 lg:mb-6 justify-center"
         initialNumToRender={6}
         maxToRenderPerBatch={6}
         windowSize={3}
@@ -140,9 +130,9 @@ const SearchScreen = () => {
           <>
             {/* Logo Header */}
             <View className="w-full flex-row justify-center mt-12 sm:mt-14 md:mt-16 lg:mt-20 items-center mb-4 sm:mb-5 md:mb-6">
-              <Image 
-                source={icons.logo} 
-                className="w-10 h-8 sm:w-12 sm:h-10 md:w-14 md:h-12 lg:w-16 lg:h-14" 
+              <Image
+                source={icons.logo}
+                className="w-10 h-8 sm:w-12 sm:h-10 md:w-14 md:h-12 lg:w-16 lg:h-14"
                 resizeMode="contain"
               />
             </View>
@@ -187,7 +177,7 @@ const SearchScreen = () => {
                   <Text className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-bold">
                     Recent Searches
                   </Text>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     onPress={handleClearAllHistory}
                     className="px-2 sm:px-3 py-1 sm:py-1.5"
                   >
@@ -212,8 +202,8 @@ const SearchScreen = () => {
                         tintColor="#9CA4AB"
                         resizeMode="contain"
                       />
-                      <Text 
-                        className="text-white text-sm sm:text-base md:text-lg flex-1" 
+                      <Text
+                        className="text-white text-sm sm:text-base md:text-lg flex-1"
                         numberOfLines={1}
                       >
                         {item.query}

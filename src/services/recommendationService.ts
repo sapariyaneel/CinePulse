@@ -1,9 +1,13 @@
 import { supabase } from './supabase';
-import { fetchMovieDetails } from './api';
 import { MOVIE_API_KEY } from '@env';
 
 const TMDB_API_KEY = MOVIE_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+
+const headers = {
+  accept: 'application/json',
+  Authorization: `Bearer ${TMDB_API_KEY}`,
+};
 
 export interface GenrePreference {
   genreId: number;
@@ -36,7 +40,7 @@ const GENRE_MAP: { [key: number]: string } = {
   36: 'History',
   27: 'Horror',
   10402: 'Music',
-  9648: 'Mystery',
+  39: 'Mystery',
   10749: 'Romance',
   878: 'Science Fiction',
   10770: 'TV Movie',
@@ -76,7 +80,8 @@ export const getUserGenrePreferences = async (userId: string): Promise<GenrePref
     for (const movieId of Array.from(movieIds).slice(0, 20)) {
       try {
         const response = await fetch(
-          `${TMDB_BASE_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}`
+          `${TMDB_BASE_URL}/movie/${movieId}`,
+          { headers }
         );
 
         if (!response.ok) continue;
@@ -141,7 +146,8 @@ export const getPersonalizedRecommendations = async (
     for (const genre of topGenres) {
       try {
         const response = await fetch(
-          `${TMDB_BASE_URL}/discover/movie?api_key=${TMDB_API_KEY}&with_genres=${genre.genreId}&sort_by=vote_average.desc&vote_count.gte=100&page=1`
+          `${TMDB_BASE_URL}/discover/movie?with_genres=${genre.genreId}&sort_by=vote_average.desc&vote_count.gte=100&page=1`,
+          { headers }
         );
         const data = await response.json();
 
@@ -173,10 +179,11 @@ export const getPersonalizedRecommendations = async (
 };
 
 // Get similar movies based on a specific movie
-export const getSimilarMovies = async (movieId: number): Promise<Movie[]> => {
+export const getSimilarMovies = async (movieId: number): Promise<RecommendedMovie[]> => {
   try {
     const response = await fetch(
-      `${TMDB_BASE_URL}/movie/${movieId}/similar?api_key=${TMDB_API_KEY}&page=1`
+      `${TMDB_BASE_URL}/movie/${movieId}/similar?page=1`,
+      { headers }
     );
     const data = await response.json();
 
@@ -194,7 +201,8 @@ export const getRecommendationsBasedOnMovie = async (
 ): Promise<RecommendedMovie[]> => {
   try {
     const response = await fetch(
-      `${TMDB_BASE_URL}/movie/${movieId}/recommendations?api_key=${TMDB_API_KEY}&page=1`
+      `${TMDB_BASE_URL}/movie/${movieId}/recommendations?page=1`,
+      { headers }
     );
     const data = await response.json();
 
@@ -216,7 +224,8 @@ export const getRecommendationsBasedOnMovie = async (
 const getPopularMovies = async (limit: number = 10): Promise<RecommendedMovie[]> => {
   try {
     const response = await fetch(
-      `${TMDB_BASE_URL}/movie/popular?api_key=${TMDB_API_KEY}&page=1`
+      `${TMDB_BASE_URL}/movie/popular?page=1`,
+      { headers }
     );
     const data = await response.json();
 
